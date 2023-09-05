@@ -1,7 +1,10 @@
 # Dif-App-Web
-Dif+ App Web es una aplicación web de administradores para la aplicación Dif+ App, hecha con Kotlin. El repositorio se encuentra [aqui](https://www.github.com/Its-Yayo/Dif-App)
+Dif+ App Web es una aplicación web de administradores para la aplicación Dif+ App, hecha con Kotlin. El repositorio se encuentra [aqui](https://www.github.com/Its-Yayo/Dif-App).
 
-## Introducción 
+## Frontend
+Proximamente...
+
+## Backend
 Proximamente...
 
 ## Versiones
@@ -19,3 +22,6 @@ $ git pull
 
 ## Colaboradores
 Más detalles proximamente..
+
+## Licencia
+Este proyecto está bajo la licencia [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html). 
