@@ -10,6 +10,7 @@ Proximamente...
 ## Versiones
 Proximamente...
 
+## Usos
 Para clonar el repositorio, debes colocar los siguientes comandos en la terminal. Debes contar con [git](https://git-scm.com/downloads) ya instalado. 
 ```bash
 $ git clone https://www.github.com/Its-Yayo/Dif-App-Web.git
