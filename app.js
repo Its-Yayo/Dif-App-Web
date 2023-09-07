@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var app = express();
+var express_1 = require("express");
+var app = (0, express_1.default)();
 var port = 3000;
-app.use(express.json());
+app.use(express_1.default.json());
 app.get('/', function (req, res) {
     res.send('TODO implementation');
 });

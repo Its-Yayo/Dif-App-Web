@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express, { request, response } from 'express';
 
 const app = express();
 const port = 3000;
