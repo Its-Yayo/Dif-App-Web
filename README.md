@@ -2,7 +2,8 @@
 Dif+ App Web es una aplicación web de administradores para la aplicación Dif+ App, hecha con Kotlin. El repositorio se encuentra [aqui](https://www.github.com/Its-Yayo/Dif-App).
 
 ## Frontend
-Proximamente...
+El frontend se hará con HTML, CSS y JavaScript. Se empleará la clase ```XMLHttpRequest()``` para transmisión de paquetes de una página web a un servidor web. Puedes descargar node 
+[aqui](https://nodejs.org/en/download)
 
 ## Backend
 Proximamente...
