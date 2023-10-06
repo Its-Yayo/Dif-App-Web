@@ -20,7 +20,7 @@ def login() -> str:
     ...
 
 @main.route("/error")
-def login() -> str:
+def error() -> str:
     ...
 
 
