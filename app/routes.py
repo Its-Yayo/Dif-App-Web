@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from typing import Any
 
 from connection import connection
 from flask import Blueprint, render_template, request, redirect, url_for, flash
@@ -16,7 +17,7 @@ def main() -> str:
 # Routes coming ahead
 
 @main.route("/login", methods=['GET', 'POST'])
-def login() -> str:
+def login() -> Response | Any:
     if request.method == 'POST':
         conn = connection()
         cur = conn.cursor()
@@ -33,5 +34,7 @@ def login() -> str:
     return login.html
 
 
-
+@main.route("/tablero", methods=['GET'])
+def tablero() -> None:
+    render_template('tablero.html')
 
