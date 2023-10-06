@@ -15,12 +15,23 @@ def main() -> str:
 
 # Routes coming ahead
 
-@main.route("/login")
+@main.route("/login", methods=['GET', 'POST'])
 def login() -> str:
-    ...
+    if request.method == 'POST':
+        conn = connection()
+        cur = conn.cursor()
 
-@main.route("/error")
-def error() -> str:
-    ...
+        cur.callproc('PROC_Login', request.form['usuario'], request.form['contraseña'])
+        usuario_final = cur.fetchone()
+
+        if usuario_final:
+            flash('Inicio de sesión exitoso', 'success')
+            return redirect(url_for('tablero'))
+        else:
+            flash('Credenciales incorrectas. Inténtalo de nuevo.', 'error')
+
+    return login.html
+
+
 
 
