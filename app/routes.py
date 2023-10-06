@@ -7,4 +7,20 @@ import mariadb
 
 main = Blueprint('main', __name__, template_folder='app/templates')
 
+@main.route("/")
+def main() -> str:
+    return render_template("layout.html")
+
+# --------------------------------------------------------------------
+
+# Routes coming ahead
+
+@main.route("/login")
+def login() -> str:
+    ...
+
+@main.route("/error")
+def login() -> str:
+    ...
+
 
