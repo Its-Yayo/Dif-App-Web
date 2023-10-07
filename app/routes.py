@@ -6,6 +6,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug import Response
 import mariadb
 
+
 main = Blueprint('main', __name__, template_folder='app/templates')
 
 @main.route("/")
