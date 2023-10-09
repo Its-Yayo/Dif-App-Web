@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 from typing import Any
 
 from connection import connection
@@ -13,12 +14,8 @@ main = Blueprint('main', __name__, template_folder='app/templates')
 def main() -> str:
     return render_template("layout.html")
 
-# --------------------------------------------------------------------
-
-# Routes coming ahead
-
-@main.route("/login", methods=['GET', 'POST'])
-def login() -> Response | Any:
+@main.route("/iniciar_sesion", methods=['GET', 'POST'])
+def iniciar_sesion() -> Response | Any:
     if request.method == 'POST':
         conn = connection()
         cur = conn.cursor()
@@ -33,6 +30,10 @@ def login() -> Response | Any:
             flash('Credenciales incorrectas. Inténtalo de nuevo.', 'error')
 
     return login.html
+
+@main.route("/cerrar_sesion", methods=['GET'])
+def cerrar_sesion() -> Response:
+    ...
 
 
 @main.route("/tablero", methods=['GET'])
@@ -69,4 +70,72 @@ def afluencia_inscritos(idComedor: int) -> Response:
 
 @main.route("/afluencia/predicciones/idComedor>", methods=['GET'])
 def afluencia_predicciones(idComedor: int) -> Response:
+    ...
+
+@main.route("/recaudaciones", methods=['GET'])
+def recaudaciones() -> None:
+    ...
+
+@main.route("/recaudaciones/<idComedor>/<condicion>", methods=['POST', 'GET'])
+def recaudaciones_registros(idComedor: int, condicion: str) -> Response:
+    ...
+
+@main.route("/recaudaciones/donaciones/<idComedor>", methods=['GET'])
+def recaudaciones_donaciones(idComedor: int) -> Response:
+    ...
+
+@main.route("/recaudaciones/ventas/<idComedor>", methods=['GET'])
+def recaudaciones_ventas(idComedor: int) -> Response:
+    ...
+
+@main.route("/recaudaciones/lista_donaciones/", methods=['GET'])
+def recaudaciones_lista_donaciones() -> Response:
+    ...
+
+@main.route("/recaudaciones/lista_ventas/", methods=['GET'])
+def recaudaciones_lista_ventas() -> Response:
+    ...
+
+@main.route("/personal", methods=['GET'])
+def personal() -> None:
+    ...
+
+@main.route("/personal/lista_personal/<idComedor>", methods=['GET'])
+def personal_lista(idComedor: int) -> Response:
+    ...
+
+@main.route("/personal/agregar_personal/<idComedor>", methods=['POST', 'GET'])
+def personal_agregar(idComedor: int) -> Response:
+    ...
+
+@main.route("/personal/eliminar_personal/<idComedor>", methods=['POST', 'GET'])
+def personal_eliminar(idComedor: int) -> Response:
+    ...
+
+@main.route("/personal/modificar_personal/<idComedor>", methods=['POST', 'GET'])
+def personal_modificar(idComedor: int) -> Response:
+    ...
+
+@main.route("/invetario", methods=['GET'])
+def inventario() -> None:
+    ...
+
+@main.route("/inventario/lista_inventario/<idComedor>", methods=['GET'])
+def inventario_lista(idComedor: int) -> Response:
+    ...
+
+@main.route("/inventario/agregar_inventario/<idComedor>", methods=['POST', 'GET'])
+def inventario_agregar(idComedor: int) -> Response:
+    ...
+
+@main.route("/inventario/eliminar_inventario/<idComedor>", methods=['POST', 'GET'])
+def inventario_eliminar(idComedor: int) -> Response:
+    ...
+
+@main.route("/informe_costos", methods=['GET'])
+def informe_costos() -> None:
+    ...
+
+@main.route("/informe_costos/<idComedor>", methods=['GET'])
+def informe_costos_comedor(idComedor: int) -> Response:
     ...
