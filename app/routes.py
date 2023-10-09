@@ -12,7 +12,7 @@ main = Blueprint('main', __name__, template_folder='app/templates')
 
 @main.route("/")
 def main() -> str:
-    return render_template("layout.html")
+    return render_template("login.html")
 
 @main.route("/iniciar_sesion", methods=['GET', 'POST'])
 def iniciar_sesion() -> Response | Any:
@@ -29,11 +29,12 @@ def iniciar_sesion() -> Response | Any:
         else:
             flash('Credenciales incorrectas. Inténtalo de nuevo.', 'error')
 
-    return login.html
+    return render_template("login.html")
 
-@main.route("/cerrar_sesion", methods=['GET'])
+@main.route("/cerrar_sesion", methods=['GET', 'POST'])
 def cerrar_sesion() -> Response:
-    ...
+    if request.method == 'POST':
+        return redirect(url_for('main'))
 
 
 @main.route("/tablero", methods=['GET'])
@@ -58,7 +59,7 @@ def tablero_comedores() -> Response:
 
 @main.route("/afluencia", methods=['GET'])
 def afluencia() -> None:
-    ...
+    render_template('afluencia.html')
 
 @main.route("/afluencia/<idComedor>/<condicion>", methods=['POST', 'GET'])
 def afluencia_registros(idComedor: int, condicion: str) -> Response:
@@ -74,7 +75,7 @@ def afluencia_predicciones(idComedor: int) -> Response:
 
 @main.route("/recaudaciones", methods=['GET'])
 def recaudaciones() -> None:
-    ...
+    render_template('recaudaciones.html')
 
 @main.route("/recaudaciones/<idComedor>/<condicion>", methods=['POST', 'GET'])
 def recaudaciones_registros(idComedor: int, condicion: str) -> Response:
@@ -98,7 +99,7 @@ def recaudaciones_lista_ventas() -> Response:
 
 @main.route("/personal", methods=['GET'])
 def personal() -> None:
-    ...
+    render_template('personal.html')
 
 @main.route("/personal/lista_personal/<idComedor>", methods=['GET'])
 def personal_lista(idComedor: int) -> Response:
@@ -118,7 +119,7 @@ def personal_modificar(idComedor: int) -> Response:
 
 @main.route("/invetario", methods=['GET'])
 def inventario() -> None:
-    ...
+    render_template('inventario.html')
 
 @main.route("/inventario/lista_inventario/<idComedor>", methods=['GET'])
 def inventario_lista(idComedor: int) -> Response:
@@ -134,7 +135,7 @@ def inventario_eliminar(idComedor: int) -> Response:
 
 @main.route("/informe_costos", methods=['GET'])
 def informe_costos() -> None:
-    ...
+    render_template('informe_costos.html')
 
 @main.route("/informe_costos/<idComedor>", methods=['GET'])
 def informe_costos_comedor(idComedor: int) -> Response:
