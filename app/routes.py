@@ -42,8 +42,15 @@ def tablero() -> None:
     render_template('tablero.html')
 
 @main.route("/tablero/afluencia/<string:idComedor>", methods=['GET'])
-def tablero_afluencia(idComedor: int) -> Response:
-    ...
+def tablero_afluencia(idComedor: int) -> str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_Afluencia', idComedor)
+        afluencia = cur.fetchone()
+
+        return render_template('tablero_afluencia.html', afluencia=afluencia)
 
 @main.route("/tablero/recaudacion", methods=['GET'])
 def tablero_recaudacion() -> Response:
