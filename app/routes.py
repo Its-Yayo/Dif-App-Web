@@ -134,18 +134,6 @@ def personal() -> None:
 def personal_lista(idComedor: int) -> Response:
     ...
 
-@main.route("/personal/agregar_personal/<idComedor>", methods=['POST', 'GET'])
-def personal_agregar(idComedor: int) -> Response:
-    ...
-
-@main.route("/personal/eliminar_personal/<idComedor>", methods=['POST', 'GET'])
-def personal_eliminar(idComedor: int) -> Response:
-    ...
-
-@main.route("/personal/modificar_personal/<idComedor>", methods=['POST', 'GET'])
-def personal_modificar(idComedor: int) -> Response:
-    ...
-
 @main.route("/invetario", methods=['GET'])
 def inventario() -> None:
     render_template('inventario.html')
@@ -170,5 +158,20 @@ def informe_costos() -> None:
 def informe_costos_comedor(idComedor: int) -> Response:
     ...
 
+
+# TODO: APIs de las Apps móviles
 @main.route("/usuario/<idComedor", methods=['GET', 'POST'])
 def usuario() -> None:
+    ...
+
+@main.route("/personal/agregar_personal/<idComedor>", methods=['POST', 'GET'])
+def personal_agregar(idComedor: int) -> Response:
+    ...
+
+@main.route("/personal/eliminar_personal/<idComedor>", methods=['POST', 'GET'])
+def personal_eliminar(idComedor: int) -> Response:
+    ...
+
+@main.route("/personal/modificar_personal/<idComedor>", methods=['POST', 'GET'])
+def personal_modificar(idComedor: int) -> Response:
+    ...
