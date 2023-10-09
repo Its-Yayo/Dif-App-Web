@@ -50,19 +50,41 @@ def tablero_afluencia(idComedor: int) -> str:
         cur.callproc('PROC_Afluencia', idComedor)
         afluencia = cur.fetchone()
 
-        return render_template('tablero_afluencia.html', afluencia=afluencia)
+        return render_template('tablero.html', afluencia=afluencia)
+
 
 @main.route("/tablero/recaudacion", methods=['GET'])
-def tablero_recaudacion() -> Response:
-    ...
+def tablero_recaudacion() -> str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_Recaudacion')
+        recaudacion = cur.fetchone()
+
+        return render_template('tablero.html', recaudacion=recaudacion)
 
 @main.route("/tablero/afluencia_año", methods=['GET'])
-def tablero_afluencia_year() -> Response:
-    ...
+def tablero_afluencia_year() -> str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_Afluencia_Año')
+        afluencia_year = cur.fetchone()
+
+        return render_template('tablero.html', afluencia_year=afluencia_year)
 
 @main.route("/tablero/afluencia_comedores", methods=['GET'])
-def tablero_comedores() -> Response:
-    ...
+def tablero_comedores() -> str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_Afluencia_Comedores')
+        afluencia_comedores = cur.fetchone()
+
+        return render_template('tablero.html', afluencia_comedores=afluencia_comedores)
 
 @main.route("/afluencia", methods=['GET'])
 def afluencia() -> None:
@@ -147,3 +169,6 @@ def informe_costos() -> None:
 @main.route("/informe_costos/<idComedor>", methods=['GET'])
 def informe_costos_comedor(idComedor: int) -> Response:
     ...
+
+@main.route("/usuario/<idComedor", methods=['GET', 'POST'])
+def usuario() -> None:
