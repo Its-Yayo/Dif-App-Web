@@ -138,7 +138,7 @@ def recaudaciones() -> None:
     render_template('recaudaciones.html')
 
 
-@main.route("/recaudaciones/<idComedor>/<tiempo>", methods=['POST', 'GET'])
+@main.route("/recaudaciones/<idComedor>/<tiempo>", methods=['GET'])
 def recaudaciones_registros(idComedor: int, tiempo: str) -> Response | str:
     if request.method == 'GET':
         conn = connection()
