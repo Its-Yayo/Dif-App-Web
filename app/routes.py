@@ -201,3 +201,13 @@ def personal_eliminar(idComedor: int) -> Response:
 @main.route("/personal/modificar_personal/<idComedor>", methods=['POST', 'GET'])
 def personal_modificar(idComedor: int) -> Response:
     ...
+
+
+@main.route("/agregar_comida/<idComedor>", methods=['POST', 'GET'])
+def agregar_comida(idComedor: int) -> Response:
+    ...
+
+
+@main.route("/mostrar_comida/<idComedor>", methods=['GET'])
+def mostrar_comida(idComedor: int) -> Response:
+    ...
