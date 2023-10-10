@@ -138,9 +138,16 @@ def recaudaciones() -> None:
     render_template('recaudaciones.html')
 
 
-@main.route("/recaudaciones/<idComedor>/<condicion>", methods=['POST', 'GET'])
-def recaudaciones_registros(idComedor: int, condicion: str) -> Response:
-    ...
+@main.route("/recaudaciones/<idComedor>/<tiempo>", methods=['POST', 'GET'])
+def recaudaciones_registros(idComedor: int, tiempo: str) -> Response | str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_RecaudacionesRegistros', idComedor, tiempo)
+        recaudaciones = cur.fetchone()
+
+        return render_template('recaudaciones.html', recaudaciones=recaudaciones)
 
 
 @main.route("/recaudaciones/donaciones/<idComedor>", methods=['GET'])
