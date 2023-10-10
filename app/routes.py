@@ -239,8 +239,8 @@ def informe_costos_comedor(idComedor: int) -> Response:
 
 
 # TODO: APIs de las Apps móviles
-@main.route("/usuario/<idComedor", methods=['GET', 'POST'])
-def usuario() -> None:
+@main.route("/agregar_asuario/<idComedor", methods=['GET', 'POST'])
+def agregar_usuario() -> None:
     ...
 
 
