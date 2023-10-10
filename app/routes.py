@@ -151,23 +151,51 @@ def recaudaciones_registros(idComedor: int, tiempo: str) -> Response | str:
 
 
 @main.route("/recaudaciones/donaciones/<idComedor>", methods=['GET'])
-def recaudaciones_donaciones(idComedor: int) -> Response:
-    ...
+def recaudaciones_donaciones(idComedor: int) -> Response | str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_RecaudacionesDonaciones', idComedor)
+        recaudaciones_donaciones = cur.fetchone()
+
+        return render_template('recaudaciones.html', recaudaciones_donaciones=recaudaciones_donaciones)
 
 
 @main.route("/recaudaciones/ventas/<idComedor>", methods=['GET'])
-def recaudaciones_ventas(idComedor: int) -> Response:
-    ...
+def recaudaciones_ventas(idComedor: int) -> Response | str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_RecaudacionesVentas', idComedor)
+        recaudaciones_ventas = cur.fetchone()
+
+        return render_template('recaudaciones.html', recaudaciones_ventas=recaudaciones_ventas)
 
 
 @main.route("/recaudaciones/lista_donaciones/", methods=['GET'])
-def recaudaciones_lista_donaciones() -> Response:
-    ...
+def recaudaciones_lista_donaciones() -> Response | str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_RecaudacionesListaDonaciones')
+        recaudaciones_lista_donaciones = cur.fetchone()
+
+        return render_template('recaudaciones.html', recaudaciones_lista_donaciones=recaudaciones_lista_donaciones)
 
 
 @main.route("/recaudaciones/lista_ventas/", methods=['GET'])
-def recaudaciones_lista_ventas() -> Response:
-    ...
+def recaudaciones_lista_ventas() -> Response | str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_RecaudacionesListaVentas')
+        recaudaciones_lista_ventas = cur.fetchone()
+
+        return render_template('recaudaciones.html', recaudaciones_lista_ventas=recaudaciones_lista_ventas)
 
 
 @main.route("/personal", methods=['GET'])
