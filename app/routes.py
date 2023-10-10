@@ -50,7 +50,7 @@ def tablero_afluencia(idComedor: int) -> str:
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_Afluencia', idComedor)
+        cur.callproc('PROC_TableroAfluencia', idComedor)
         afluencia = cur.fetchone()
 
         return render_template('tablero.html', afluencia=afluencia)
@@ -62,7 +62,7 @@ def tablero_recaudacion() -> str:
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_Recaudacion')
+        cur.callproc('PROC_TableroRecaudacion')
         recaudacion = cur.fetchone()
 
         return render_template('tablero.html', recaudacion=recaudacion)
@@ -74,7 +74,7 @@ def tablero_afluencia_year() -> str:
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_Afluencia_Año')
+        cur.callproc('PROC_TableroAfluenciaAño')
         afluencia_year = cur.fetchone()
 
         return render_template('tablero.html', afluencia_year=afluencia_year)
@@ -86,7 +86,7 @@ def tablero_comedores() -> str:
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_Afluencia_Comedores')
+        cur.callproc('PROC_TableroAfluenciaComedores')
         afluencia_comedores = cur.fetchone()
 
         return render_template('tablero.html', afluencia_comedores=afluencia_comedores)
