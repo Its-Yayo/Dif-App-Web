@@ -204,8 +204,15 @@ def personal() -> None:
 
 
 @main.route("/personal/lista_personal/<idComedor>", methods=['GET'])
-def personal_lista(idComedor: int) -> Response:
-    ...
+def personal_lista(idComedor: int) -> Response | str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_PersonalLista', idComedor)
+        personal_lista = cur.fetchone()
+
+        return render_template('personal.html', personal_lista=personal_lista)
 
 
 @main.route("/invetario", methods=['GET'])
@@ -214,12 +221,24 @@ def inventario() -> None:
 
 
 @main.route("/inventario/lista_inventario/<idComedor>", methods=['GET'])
-def inventario_lista(idComedor: int) -> Response:
-    ...
+def inventario_lista(idComedor: int) -> Response | str:
+    if request.method == 'GET':
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_InventarioLista', idComedor)
+        inventario_lista = cur.fetchone()
+
+        return render_template('inventario.html', inventario_lista=inventario_lista)
 
 
 @main.route("/inventario/agregar_inventario/<idComedor>", methods=['POST', 'GET'])
 def inventario_agregar(idComedor: int) -> Response:
+    if request.method == 'POST':
+        conn = connection()
+        cur = conn.cursor()
+
+
     ...
 
 
