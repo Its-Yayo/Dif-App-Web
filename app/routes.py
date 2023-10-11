@@ -31,7 +31,7 @@ def iniciar_sesion() -> Response | Any:
 @main.route("/cerrar_sesion", methods=['GET', 'POST'])
 def cerrar_sesion() -> Response:
     if request.method == 'POST':
-        return redirect(url_for('main'))
+        return redirect(url_for('main.root'))
 
 
 @main.route("/tablero", methods=['GET'])
