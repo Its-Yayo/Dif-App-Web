@@ -234,9 +234,42 @@ def inventario_lista(idComedor: int) -> Response | str:
 
 
 # TODO: APIs de las Apps móviles
-@main.route("/agregar_asuario/<idComedor", methods=['GET', 'POST'])
-def agregar_usuario() -> None:
+@main.route("/agregar_usuario", methods=['POST'])
+def agregar_usuario():
+    try:
+        if 'curp' in request.form:
+            curp = request.form['curp']
+        else:
+            curp = None
 
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        correo = request.form['correo']
+        contraseña = request.form['contraseña']
+        tipo = request.form['tipo']
+
+        # Realiza validaciones de datos si es necesario
+
+        # Luego, guarda los datos en la base de datos
+        conn = connection()
+        cur = conn.cursor()
+        cur.callproc('PROC_AgregarUsuario', (nombre, apellido, correo, contraseña, tipo, curp))
+        conn.commit()
+        conn.close()
+
+        response = {
+            'message': 'Usuario agregado exitosamente',
+            'status': 'success'
+        }
+        return jsonify(response), 200
+
+    except Exception as e:
+        response = {
+            'message': 'Error al agregar usuario',
+            'status': 'error',
+            'error': str(e)
+        }
+        return jsonify(response), 500
 
 
 @main.route("/personal/agregar_personal/<idComedor>", methods=['POST', 'GET'])
