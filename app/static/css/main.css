@@ -1,0 +1,100 @@
+@font-face {
+    font-family: montserrat;
+    src: url(../Fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+*{
+    padding : 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    background: #2f323a;
+}
+
+
+body{
+    font-family: montserrat;
+}
+
+nav{
+    background: #22242a;
+    height: 80px;
+    width: 100%;
+}
+
+label.logo{
+    color: white;
+    font-size: 20px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+    background: #22242a;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20¿¿px;
+    background: #2f323a;
+}
+
+nav ul li{
+    display: inline-block;
+    margin: 0 5px;
+    line-height: 80px;
+    background: #2f323a
+
+}
+
+nav ul li a{
+    color: rebeccapurple;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 7px 13px;
+    border-radius: 3px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+a.active, a:hover{
+    background: white;
+    transition: .5s;
+}
+
+#check{
+    display: none;
+}
+
+#Home1, #Home2{
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#Estadisticas h1{
+    margin: 50px;
+    color: black;
+    border-radius: 3px;
+}
+
+
+#Administrar_comedores h1{
+    margin: 50px;
+    color: black;
+}
+
+
+#Personal h1{
+    margin: 50px;
+    color: black;
+}
+
+#Ubicaciones h1{
+    margin: 50px;
+    color: black;
+}
+
+.container{
+    border-radius: 4px;
+    
+}

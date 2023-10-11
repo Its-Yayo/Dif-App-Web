@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comedores DIF</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+    <script src="../static/js/btn_navbar"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <button id="toggleNav">☰</button>
+            <a href="home.html" class="logo_Atzp">
+                <img src="../templates/images/escudo-atz.webp" alt="" width="150px">
+            </a>
+            <nav id="sideNav">
+                <ul>
+                    <li><a href="../html/home.html">Tablero</a></li>
+                    <li><a href="../html/afluencia.html">Afluencia</a></li>
+                    <li><a href="#personal">Personal</a></li>
+                    <li><a href="#recaudacion">Recaudación</a></li>
+                    <li><a href="#inventario">Inventario</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="search_bar">
+
+        </div>
+
+        <nav class="user_menu">
+            <!--Depende de la base de datos-->
+            <div class="dropdown">
+                <a href="" class="profile_nav">
+                    <img class="user" alt="Profile" src="../templates/images/admin.png" width="60px">
+                    <span class="user_name">
+                        C. Soto
+                        
+                        <!--Depende de la base de datos-->
+                        <div class="dropdown-content">
+                            <a href="">Mi Perfil</a>
+                            <a href="">Configuración de cuenta</a>
+                            <a href="">Cerrar sesión</a>
+                        </div>
+                    </span>
+                </a>
+            </div>    
+        </nav>
+    </header>
+
+    <!-- Contenido de las secciones -->
+<div class="dashboard">
+
+    <div class="Dashb_container">
+
+        <div class="item-1" id="afluencia_dia">
+            Afluencia hoy
+        </div>
+        <div class="item-2" id="recaudacion_dia">
+            Recaudación hoy
+        </div>
+        <div class="item-3" id="comidas">
+            Comidas repartidas | Día
+        </div>
+        <div class="item-4" id="afluencia_mes">
+            Comidas repartidas | Día
+            Afluencia | Mensual
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

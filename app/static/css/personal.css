@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    margin-top: 150px;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 0px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    z-index: 1;
+
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+#toggleNav {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#sideNav {
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    position:fixed;
+    left: -250px;
+    top: 0;
+    transition: left 0.3s ease-in-out;
+    margin-top: 90px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    z-index: 20px;
+}
+
+#sideNav.open {
+    left: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #555;
+}
+
+a.logo_Atzp{
+    padding: 2px;
+}
+
+a.logo_Atzp, .profile_nav:hover{
+    background-color: #333;
+}
+
+.profile_nav{
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user_name, .filter_btn{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.user_menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a {
+    text-decoration: none;
+    font-style: oblique;
+}
+
+.dashb_personal{
+    height: 130vh;
+    margin-left: 0;
+    transition: margin-left 0.5s;
+}
+
+.container{
+    margin: 80px;
+    height: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(470px, 1fr);
+    gap: 30px;
+    align-content: center;
+}
+
+.item-1, .item-2{
+    border: 2px black solid;
+    border-radius: 9px;
+    padding: 15px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);;
+}
+
+.filter_btn{
+    color: black;
+}
