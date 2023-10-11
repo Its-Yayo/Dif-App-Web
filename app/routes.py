@@ -3,7 +3,7 @@
 from typing import Any
 
 from connection import connection
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 from werkzeug import Response
 import mariadb
 
@@ -234,11 +234,6 @@ def inventario_lista(idComedor: int) -> Response | str:
 
 @main.route("/inventario/agregar_inventario/<idComedor>", methods=['POST', 'GET'])
 def inventario_agregar(idComedor: int) -> Response:
-    if request.method == 'POST':
-        conn = connection()
-        cur = conn.cursor()
-
-
     ...
 
 
@@ -260,7 +255,7 @@ def informe_costos_comedor(idComedor: int) -> Response:
 # TODO: APIs de las Apps móviles
 @main.route("/agregar_asuario/<idComedor", methods=['GET', 'POST'])
 def agregar_usuario() -> None:
-    ...
+
 
 
 @main.route("/personal/agregar_personal/<idComedor>", methods=['POST', 'GET'])
@@ -277,12 +272,3 @@ def personal_eliminar(idComedor: int) -> Response:
 def personal_modificar(idComedor: int) -> Response:
     ...
 
-
-@main.route("/agregar_comida/<idComedor>", methods=['POST', 'GET'])
-def agregar_comida(idComedor: int) -> Response:
-    ...
-
-
-@main.route("/mostrar_comida/<idComedor>", methods=['GET'])
-def mostrar_comida(idComedor: int) -> Response:
-    ...
