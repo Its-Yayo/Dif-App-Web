@@ -244,16 +244,13 @@ def agregar_usuario():
 
         nombre = request.form['nombre']
         apellido = request.form['apellido']
-        correo = request.form['correo']
-        contraseña = request.form['contraseña']
-        tipo = request.form['tipo']
+        edad = request.form['edad']
+        genero = request.form['genero']
+        circunstancia = request.form['circunstancia']
 
-        # Realiza validaciones de datos si es necesario
-
-        # Luego, guarda los datos en la base de datos
         conn = connection()
         cur = conn.cursor()
-        cur.callproc('PROC_AgregarUsuario', (nombre, apellido, correo, contraseña, tipo, curp))
+        cur.callproc('PROC_AgregarUsuario', (nombre, apellido, edad, genero, circunstancia))
         conn.commit()
         conn.close()
 
