@@ -215,6 +215,7 @@ def personal_lista(idComedor: int) -> Response | str:
         return render_template('personal.html', personal_lista=personal_lista)
 
 
+
 @main.route("/invetario", methods=['GET'])
 def inventario() -> None:
     render_template('inventario.html')
