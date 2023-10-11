@@ -233,26 +233,6 @@ def inventario_lista(idComedor: int) -> Response | str:
         return render_template('inventario.html', inventario_lista=inventario_lista)
 
 
-@main.route("/inventario/agregar_inventario/<idComedor>", methods=['POST', 'GET'])
-def inventario_agregar(idComedor: int) -> Response:
-    ...
-
-
-@main.route("/inventario/eliminar_inventario/<idComedor>", methods=['POST', 'GET'])
-def inventario_eliminar(idComedor: int) -> Response:
-    ...
-
-
-@main.route("/informe_costos", methods=['GET'])
-def informe_costos() -> None:
-    render_template('informe_costos.html')
-
-
-@main.route("/informe_costos/<idComedor>", methods=['GET'])
-def informe_costos_comedor(idComedor: int) -> Response:
-    ...
-
-
 # TODO: APIs de las Apps móviles
 @main.route("/agregar_asuario/<idComedor", methods=['GET', 'POST'])
 def agregar_usuario() -> None:
