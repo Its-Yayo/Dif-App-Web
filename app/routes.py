@@ -10,11 +10,6 @@ import mariadb
 main = Blueprint('main', __name__, template_folder='app/templates')
 
 
-@main.route("/")
-def main() -> str:
-    return render_template("login.html")
-
-
 @main.route("/iniciar_sesion", methods=['GET', 'POST'])
 def iniciar_sesion() -> Response | Any:
     if request.method == 'POST':
@@ -283,3 +278,9 @@ def personal_eliminar(idComedor: int) -> Response:
 def personal_modificar(idComedor: int) -> Response:
     ...
 
+
+# --------------------------------------------
+
+@main.route("/")
+def root() -> str:
+    return render_template("login.html")
