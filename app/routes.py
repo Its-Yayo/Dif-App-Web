@@ -5,6 +5,7 @@ from typing import Any
 from connection import connection
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 from werkzeug import Response
+from flask_bcrypt import Bcrypt
 import mariadb
 
 main = Blueprint('main', __name__, template_folder='app/templates')
@@ -19,7 +20,7 @@ def iniciar_sesion() -> Response | Any:
         cur.callproc('PROC_Login', request.form['usuario'], request.form['contraseña'])
         usuario_final = cur.fetchone()
 
-        if usuario_final:
+        if usuario_final and usuario_final[0] == 1:
             flash('Inicio de sesión exitoso', 'success')
             return redirect(url_for('tablero'))
         else:
