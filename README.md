@@ -23,8 +23,8 @@ $ git pull
 ```
 
 ## Colaboradores
-Luis Fer De León - [@Its-Yayo](https://github.com/Its-Yayo)
-Carlos Ernesto Soto - [@CSA09](https://github.com/CSA09)
+- Luis Fer De León - [@Its-Yayo](https://github.com/Its-Yayo)
+- Carlos Ernesto Soto - [@CSA09](https://github.com/CSA09)
 
 ## Licencia
 Este proyecto está bajo la licencia [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html). 
