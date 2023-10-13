@@ -19,7 +19,7 @@ def iniciar_sesion() -> Response | Any:
         cur.callproc('PROC_Login', request.form['usuario'], request.form['contraseña'])
         usuario_final = cur.fetchone()
 
-        if usuario_final:
+        if usuario_final and usuario_final[0] == 1:
             flash('Inicio de sesión exitoso', 'success')
             return redirect(url_for('tablero'))
         else:
@@ -298,20 +298,28 @@ def registrar_empleado():
         }
         return jsonify(response), 500
 
+@main.route("/iniciar_sesion_app", methods=['POST'])
+def iniciar_sesion_app() -> Response | Any:
+    data = request.get_json()
 
-@main.route("/personal/agregar_personal/<idComedor>", methods=['POST', 'GET'])
-def personal_agregar(idComedor: int) -> Response:
-    ...
+    conn = connection()
+    cur = conn.cursor()
 
+    cur.callproc('PROC_Login', data['usuario'], data['contraseña'])
+    usuario_final = cur.fetchone()
 
-@main.route("/personal/eliminar_personal/<idComedor>", methods=['POST', 'GET'])
-def personal_eliminar(idComedor: int) -> Response:
-    ...
-
-
-@main.route("/personal/modificar_personal/<idComedor>", methods=['POST', 'GET'])
-def personal_modificar(idComedor: int) -> Response:
-    ...
+    if usuario_final and usuario_final[0] == 1:
+        response = {
+            'message': 'Inicio de sesión exitoso',
+            'status': 'success'
+        }
+        return jsonify(response), 200
+    else:
+        response = {
+            'message': 'Credenciales incorrectas. Inténtalo de nuevo.',
+            'status': 'error'
+        }
+        return jsonify(response), 401
 
 
 # --------------------------------------------
