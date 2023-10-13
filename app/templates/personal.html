@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comedores DIF</title>
-    <link rel="stylesheet" href="../css/personal.css"> 
-    <script src="../js/btn_navbar"></script>
-    <script src="../js/btn_filter_personal.js"></script>
+    <link rel="stylesheet" href="../static/css/personal.css"> 
+    <script src="../static/js/btn_navbar.js"></script>
+    <script src="../static/js/btn_filter_personal.js"></script>
 </head>
 <body>
     <header>
         <div class="navbar">
             <button id="toggleNav">☰</button>
             <a href="home.html" class="logo_Atzp">
-                <img src="../images/escudo-atz.webp" alt="" width="150px">
+                <img src="../templates/images/escudo-atz.webp" alt="" width="150px">
             </a>
             <nav id="sideNav">
                 <ul>
@@ -22,6 +22,7 @@
                     <li><a href="personal.html">Personal</a></li>
                     <li><a href="recaudacion.html">Recaudación</a></li>
                     <li><a href="inventario.html">Inventario</a></li>
+                    <li><a href="informe_costos.html"></a>Informe de costos</li>
                 </ul>
             </nav>
         </div>
@@ -34,7 +35,7 @@
             <!--Depende de la base de datos-->
             <div class="dropdown">
                 <a href="" class="profile_nav">
-                    <img class="user" alt="Profile" src="../images/admin.png" width="60px">
+                    <img class="user" alt="Profile" src="../templates/images/admin.png" width="60px">
                     <span class="user_name">
                         C. Soto
                         
@@ -50,44 +51,21 @@
         </nav>
     </header>
 
+<div class="filter_comedor">
+    <a href=""></a>
+</div>
     <!-- Contenido de las secciones -->
 <div class="dashb_personal">
-
+<!--Se necesita organizar por comedor-->
     <div class="container">
 
         <div class="item-1" id="empleados">
-            <div class="dropdown">
-                <a href="" class="filter_nav">
-                    <span class="filter_btn">
-                        Empleados
-
-                        <div class="dropdown-content">
-                            <a href="" class="filter_nav">Todos</a>
-                            <a href="" class="filter_nav">Administrativos</a>
-                        
-                        </div>
-                    </span>
-                </a>
-            </div>                                           
-        </div>
-        
-        <div class="item-2" id="voluntarios">
-            <div class="dropdown">
-                <a href="" class="filter_nav">
-                    <span class="filter_btn">
-                        ...
-
-                        <div class="dropdown-content">
-                            <a href="" class="filter_nav">Todos</a>
-                            <a href="" class="filter_nav">Administrativos</a>
-                            <a href="" class="filter_nav">Voluntarios</a>
-                        </div>
-                    </span>
-                </a>
+            Empleados
+            <div class="intainer">
+                Datos
             </div>
-            <!-- Contenido de voluntarios -->
         </div>
-        
+
 
     </div>
 </div>

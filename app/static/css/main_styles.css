@@ -131,62 +131,17 @@ nav a {
     height: 130vh;
 }
 
-.Dashb_container, .recaudacion_container, .inventario_container,
-.informe_container{
-    margin: 90px;
+.Dashb_container{
+    margin: 80px;
     height: 65%;
     display: grid;
-    gap: 30px;
-    align-content: center;
-}
-
-.Dashb_container{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: "header header header";
     grid-auto-rows: minmax(150px, 1fr);
+    gap: 30px;
+    align-content: center;
 }
-
-/* Para recaudación */
-
-.recaudacion_container{
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: "header header header";
-    grid-auto-rows: minmax(150px, 1fr);
-}
-
-.grid_item{
-    border: 2px black solid;
-    border-radius: 9px;
-    padding: 15px;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);;
-}
-
-#recaudacion{
-    grid-row: 2 /span 3;
-    grid-column: 1 / span 2;
-}
-
-#porcentaje{
-    grid-row: 1 / span 3;
-}
-
-/* Recaudación (fin) */
-
-/* Para inventario e informe */
-
-.inventario_container, .informe_container{
-    height: 80%;
-    margin: 150px;
-    margin-left: 180px;
-    margin-right: 180px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-}
-
-/* Inventario e informe (fin) */
-
 
 .item-1, .item-2, .item-3, .item-4{
     border: 2px black solid;

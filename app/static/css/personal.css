@@ -3,6 +3,12 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     margin-top: 150px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+body.side-nav-open{
+    margin-left: 250px; /* Ancho del sidenav */
+    transition: margin-left 0.3s ease-in-out;
 }
 
 header {
@@ -15,7 +21,8 @@ header {
     position: fixed;
     top: 0; 
     width: 100%;
-    z-index: 1;
+    z-index: 2;
+    left: 0 ;
 
 }
 
@@ -129,7 +136,9 @@ nav a {
 }
 
 .container{
-    margin: 80px;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
     height: 60%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -148,3 +157,18 @@ nav a {
 .filter_btn{
     color: black;
 }
+
+.intainer{
+    margin: 15px;
+    height: 90%; /* **** */
+    padding: 10px;
+    background-color: rgb(93, 230, 230);
+}
+
+.filter_comedor{
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    justify-content: flex-end;
+}
+

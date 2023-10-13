@@ -1,3 +1,4 @@
+// Código para el boton del sidenav
 document.addEventListener("DOMContentLoaded", function() {
     const toggleNavButton = document.getElementById("toggleNav");
     const sideNav = document.getElementById("sideNav");
