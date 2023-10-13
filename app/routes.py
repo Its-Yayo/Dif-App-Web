@@ -229,8 +229,8 @@ def inventario_lista(idComedor: int) -> Response | str:
 
 
 # TODO: APIs de las Apps móviles
-@main.route("/agregar_usuario", methods=['POST'])
-def agregar_usuario():
+@main.route("/registrar_usuario", methods=['POST'])
+def registrar_usuario():
     try:
         if 'curp' in request.form:
             curp = request.form['curp']
@@ -258,6 +258,41 @@ def agregar_usuario():
     except Exception as e:
         response = {
             'message': 'Error al agregar usuario',
+            'status': 'error',
+            'error': str(e)
+        }
+        return jsonify(response), 500
+
+@main.route("/registrar_empleado", methods=['POST'])
+def registrar_empleado():
+    try:
+        if 'curp' in request.form:
+            curp = request.form['curp']
+        else:
+            curp = None
+
+        comedor = request.form['comedor']
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        edad = request.form['edad']
+        genero = request.form['genero']
+        circunstancia = request.form['circunstancia']
+
+        conn = connection()
+        cur = conn.cursor()
+
+        cur.callproc('PROC_AgregarEmpleado', (curp, comedor, nombre, apellido, edad, genero, circunstancia))
+        conn.commit()
+
+        response = {
+            'message': 'Empleado agregado exitosamente',
+            'status': 'success'
+        }
+        return jsonify(response), 200
+
+    except Exception as e:
+        response = {
+            'message': 'Error al agregar empleado',
             'status': 'error',
             'error': str(e)
         }
