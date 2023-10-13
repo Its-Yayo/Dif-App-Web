@@ -22,7 +22,7 @@ Para actualizar los cambios en tu host, debes colocar lo siguiente.
 $ git pull
 ```
 
-## Colaboradores
+## Desarrolladores
 - Luis Fer De León - [@Its-Yayo](https://github.com/Its-Yayo)
 - Carlos Ernesto Soto - [@CSA09](https://github.com/CSA09)
 
