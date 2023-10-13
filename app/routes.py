@@ -229,8 +229,8 @@ def inventario_lista(idComedor: int) -> Response | str:
 
 
 # TODO: APIs de las Apps móviles
-@main.route("/registrar_usuario", methods=['POST'])
-def registrar_usuario():
+@main.route("/registrar_cliente", methods=['POST'])
+def registrar_cliente():
     try:
         if 'curp' in request.form:
             curp = request.form['curp']
@@ -242,10 +242,11 @@ def registrar_usuario():
         edad = request.form['edad']
         genero = request.form['genero']
         circunstancia = request.form['circunstancia']
+        rol = request.form['rol']
 
         conn = connection()
         cur = conn.cursor()
-        cur.callproc('PROC_AgregarUsuario', (nombre, apellido, edad, genero, circunstancia))
+        cur.callproc('PROC_AgregarUsuario', (nombre, apellido, edad, genero, circunstancia, rol))
         conn.commit()
         conn.close()
 
