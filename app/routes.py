@@ -246,6 +246,30 @@ def inventario_lista(idComedor: int) -> Response | str:
 
 
 # TODO: APIs de las Apps móviles
+@main.route("/iniciar_sesion_app", methods=['POST'])
+def iniciar_sesion_app() -> Response | Any:
+    data = request.get_json()
+
+    conn = connection()
+    cur = conn.cursor()
+
+    cur.callproc('PROC_Login', data['usuario'], data['contraseña'])
+    usuario_final = cur.fetchone()
+
+    if usuario_final and usuario_final[0] == 1:
+        response = {
+            'message': 'Inicio de sesión exitoso',
+            'status': 'success'
+        }
+        return jsonify(response), 200
+    else:
+        response = {
+            'message': 'Credenciales incorrectas. Inténtalo de nuevo.',
+            'status': 'error'
+        }
+        return jsonify(response), 401
+
+
 @main.route("/registrar_cliente", methods=['POST'])
 def registrar_cliente():
     try:
@@ -315,29 +339,6 @@ def registrar_empleado():
             'error': str(e)
         }
         return jsonify(response), 500
-
-@main.route("/iniciar_sesion_app", methods=['POST'])
-def iniciar_sesion_app() -> Response | Any:
-    data = request.get_json()
-
-    conn = connection()
-    cur = conn.cursor()
-
-    cur.callproc('PROC_Login', data['usuario'], data['contraseña'])
-    usuario_final = cur.fetchone()
-
-    if usuario_final and usuario_final[0] == 1:
-        response = {
-            'message': 'Inicio de sesión exitoso',
-            'status': 'success'
-        }
-        return jsonify(response), 200
-    else:
-        response = {
-            'message': 'Credenciales incorrectas. Inténtalo de nuevo.',
-            'status': 'error'
-        }
-        return jsonify(response), 401
 
 
 # --------------------------------------------
