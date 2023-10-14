@@ -10,8 +10,8 @@ import mariadb
 main = Blueprint('main', __name__, template_folder='app/templates')
 
 
-@main.route("/iniciar_sesion", methods=['GET', 'POST'])
-def iniciar_sesion() -> Response | Any:
+@main.route("/login", methods=['GET', 'POST'])
+def login() -> Response | Any:
     if request.method == 'POST':
         conn = connection()
         cur = conn.cursor()
@@ -246,8 +246,8 @@ def inventario_lista(idComedor: int) -> Response | str:
 
 
 # TODO: APIs de las Apps móviles
-@main.route("/iniciar_sesion_app", methods=['POST'])
-def iniciar_sesion_app() -> Response | Any:
+@main.route("/login_app", methods=['POST'])
+def login_app() -> Response | Any:
     data = request.get_json()
 
     conn = connection()
