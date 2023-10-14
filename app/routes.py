@@ -39,6 +39,7 @@ def tablero() -> None:
     render_template('tablero.html')
 
 
+# TODO: Implementation
 @main.route("/tablero/afluencia/<string:idComedor>", methods=['GET'])
 def tablero_afluencia(idComedor: int) -> Response | str:
     if request.method == 'GET':
@@ -51,6 +52,7 @@ def tablero_afluencia(idComedor: int) -> Response | str:
         return render_template('tablero.html', afluencia=afluencia)
 
 
+# TODO: Implementation
 @main.route("/tablero/recaudacion", methods=['GET'])
 def tablero_recaudacion() -> Response | str:
     if request.method == 'GET':
@@ -63,6 +65,7 @@ def tablero_recaudacion() -> Response | str:
         return render_template('tablero.html', recaudacion=recaudacion)
 
 
+# TODO: Implementation
 @main.route("/tablero/afluencia_año", methods=['GET'])
 def tablero_afluencia_year() -> Response | str:
     if request.method == 'GET':
@@ -75,6 +78,7 @@ def tablero_afluencia_year() -> Response | str:
         return render_template('tablero.html', afluencia_year=afluencia_year)
 
 
+# TODO: Implementation
 @main.route("/tablero/afluencia_comedores", methods=['GET'])
 def tablero_comedores() -> Response | str:
     if request.method == 'GET':
@@ -87,11 +91,13 @@ def tablero_comedores() -> Response | str:
         return render_template('tablero.html', afluencia_comedores=afluencia_comedores)
 
 
+# TODO: Implementation
 @main.route("/afluencia", methods=['GET'])
 def afluencia() -> None:
     render_template('afluencia.html')
 
 
+# TODO: Implementation
 @main.route("/afluencia/<idComedor>/<tiempo>", methods=['GET'])
 def afluencia_registros(idComedor: int, tiempo: str) -> Response | str:
     if request.method == 'GET':
@@ -104,6 +110,7 @@ def afluencia_registros(idComedor: int, tiempo: str) -> Response | str:
         return render_template('afluencia.html', afluencia=afluencia)
 
 
+# TODO: Implementation
 @main.route("/afluencia/inscritos/<idComedor>", methods=['GET'])
 def afluencia_inscritos(idComedor: int) -> Response | str:
     if request.method == 'GET':
@@ -116,6 +123,7 @@ def afluencia_inscritos(idComedor: int) -> Response | str:
         return render_template('afluencia.html', afluencia_inscritos=afluencia_inscritos)
 
 
+# TODO: Implementation
 @main.route("/afluencia/predicciones/idComedor>", methods=['GET'])
 def afluencia_predicciones(idComedor: int) -> Response | str:
     if request.method == 'GET':
@@ -128,11 +136,13 @@ def afluencia_predicciones(idComedor: int) -> Response | str:
         return render_template('afluencia.html', afluencia_predicciones=afluencia_predicciones)
 
 
+# TODO: Implementation
 @main.route("/recaudaciones", methods=['GET'])
 def recaudaciones() -> None:
     render_template('recaudaciones.html')
 
 
+# TODO: Implementation
 @main.route("/recaudaciones/<idComedor>/<tiempo>", methods=['GET'])
 def recaudaciones_registros(idComedor: int, tiempo: str) -> Response | str:
     if request.method == 'GET':
@@ -145,6 +155,7 @@ def recaudaciones_registros(idComedor: int, tiempo: str) -> Response | str:
         return render_template('recaudaciones.html', recaudaciones=recaudaciones)
 
 
+# TODO: Implementation
 @main.route("/recaudaciones/donaciones/<idComedor>", methods=['GET'])
 def recaudaciones_donaciones(idComedor: int) -> Response | str:
     if request.method == 'GET':
@@ -157,6 +168,7 @@ def recaudaciones_donaciones(idComedor: int) -> Response | str:
         return render_template('recaudaciones.html', recaudaciones_donaciones=recaudaciones_donaciones)
 
 
+# TODO: Implementation
 @main.route("/recaudaciones/ventas/<idComedor>", methods=['GET'])
 def recaudaciones_ventas(idComedor: int) -> Response | str:
     if request.method == 'GET':
@@ -169,6 +181,7 @@ def recaudaciones_ventas(idComedor: int) -> Response | str:
         return render_template('recaudaciones.html', recaudaciones_ventas=recaudaciones_ventas)
 
 
+# TODO: Implementation
 @main.route("/recaudaciones/lista_donaciones/", methods=['GET'])
 def recaudaciones_lista_donaciones() -> Response | str:
     if request.method == 'GET':
@@ -181,6 +194,7 @@ def recaudaciones_lista_donaciones() -> Response | str:
         return render_template('recaudaciones.html', recaudaciones_lista_donaciones=recaudaciones_lista_donaciones)
 
 
+# TODO: Implementation
 @main.route("/recaudaciones/lista_ventas/", methods=['GET'])
 def recaudaciones_lista_ventas() -> Response | str:
     if request.method == 'GET':
@@ -193,11 +207,13 @@ def recaudaciones_lista_ventas() -> Response | str:
         return render_template('recaudaciones.html', recaudaciones_lista_ventas=recaudaciones_lista_ventas)
 
 
+# TODO: Implementation
 @main.route("/personal", methods=['GET'])
 def personal() -> None:
     render_template('personal.html')
 
 
+# TODO: Implementation
 @main.route("/personal/lista_personal/<idComedor>", methods=['GET'])
 def personal_lista(idComedor: int) -> Response | str:
     if request.method == 'GET':
@@ -210,12 +226,13 @@ def personal_lista(idComedor: int) -> Response | str:
         return render_template('personal.html', personal_lista=personal_lista)
 
 
-
+# TODO: Implementation
 @main.route("/invetario", methods=['GET'])
 def inventario() -> None:
     render_template('inventario.html')
 
 
+# TODO: Implementation
 @main.route("/inventario/lista_inventario/<idComedor>", methods=['GET'])
 def inventario_lista(idComedor: int) -> Response | str:
     if request.method == 'GET':
