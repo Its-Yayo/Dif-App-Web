@@ -1,90 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comedores DIF</title>
-    <link rel="stylesheet" href="../static/css/home.css"> 
-    <script src="../static/js/btn_navbar.js"></script>
-</head>
-<body>
-    <header>
-        <div class="navbar">
-            <button id="toggleNav">☰</button>
-            <a href="home.html" class="logo_Atzp">
-                <img src="../templates/images/escudo-atz.webp" alt="" width="150px">
-            </a>
-            <nav id="sideNav">
-                <ul>
-                    <li><a href="home.html">Tablero</a></li>
-                    <li><a href="afluencia.html">Afluencia</a></li>
-                    <li><a href="personal.html">Personal</a></li>
-                    <li><a href="recaudacion.html">Recaudación</a></li>
-                    <li><a href="inventario.html">Inventario</a></li>
-                    <li><a href="informe_costos.html"></a>Informe de costos</li>
-                </ul>
-            </nav>
-        </div>
+{% extends 'layout.html' %}
 
-        <nav class="filter_comedor">
-            <div class="dropdown">
-                <a href="" class="profile_nav">
-                    <img class="img_comedor" alt="Comedor" src="../templates/images/comedor_icn.jpg" width="60px">
-                    <span class="user_name">
-                        Comedor 1
-                        
-                        <!--Depende de la base de datos-->
-                        <div class="dropdown-content" id="comedores">
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                            <a href="">Comedor 1</a>
-                        </div>
-                    </span>
-                </a>
-            </div>    
-        </nav>
-
-        <nav class="user_menu">
-            <!--Depende de la base de datos-->
-            <div class="dropdown">
-                <a href="" class="profile_nav">
-                    <img class="user" alt="Profile" src="../templates/images/admin.png" width="60px">
-                    <span class="user_name">
-                        C. Soto
-                    <i class="uil uil-angle-down"></i>
-                        <!--Depende de la base de datos-->
-                        <div class="dropdown-content">
-                            <a href="">Mi Perfil</a>
-                            <a href="">Configuración de cuenta</a>
-                            <a href="">Cerrar sesión</a>
-                        </div>
-                    </span>
-                </a>
-            </div>    
-        </nav>
-    </header>
-
+{% block body %}
     <!-- Contenido de las secciones -->
 <div class="dashboard">
 
@@ -94,7 +10,4 @@
         </div>
     </div>
 
-</div>
-
-</body>
-</html>
+{% endblock %}
