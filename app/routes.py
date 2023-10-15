@@ -17,12 +17,13 @@ def registro_admin() -> Response | Any:
             conn = connection()
             cur = conn.cursor()
 
-            cur.callproc('PROC_InsertAdministrador', request.method['nombre'], request.method['curp'], request.method['usuario'], request.method['contraseña'])
+            cur.callproc('PROC_InsertAdministrador', [request.method['nombre'], request.method['curp'], request.method['username'], request.method['password']])
             conn.commit()
 
             return redirect(url_for('main.login'))
         except Exception as e:
             flash('Error al registrar', 'error')
+            print(e)
             return render_template("registro.html")
 
     return render_template("registro.html")
