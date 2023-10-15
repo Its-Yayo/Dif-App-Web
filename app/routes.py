@@ -22,6 +22,12 @@ def registro_admin() -> Response | Any:
             cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
             id_comedor = cur.fetchone()[0]
 
+            # Imprimir valores para depuración
+            print("ID del Comedor:", id_comedor)
+            print("Nombre:", request.form['nombre'])
+            print("CURP:", request.form['curp'])
+            print("Usuario:", request.form['username'])
+            print("Contraseña:", request.form['password'])
 
             cur.callproc('PROC_InsertAdministrador', [id_comedor, request.form['nombre'], request.form['curp'], request.form['username'], request.form['password']])
             conn.commit()
@@ -29,7 +35,7 @@ def registro_admin() -> Response | Any:
             return redirect(url_for('main.login'))
         except Exception as e:
             flash('Error al registrar', 'error')
-            print(e)
+            print(e)  # Debug Message
             return render_template("registro.html")
 
     return render_template("registro.html")
