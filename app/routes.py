@@ -27,7 +27,7 @@ def registro_admin() -> Response | Any:
             return render_template("registro.html")
 
 
-@main.route("/login", methods=['GET', 'POST']))
+@main.route("/login", methods=['GET', 'POST'])
 def login() -> Response | Any:
     if request.method == 'POST':
         conn = connection()
