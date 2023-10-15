@@ -20,11 +20,12 @@ def registro_admin() -> Response | Any:
             cur.callproc('PROC_InsertAdministrador', request.method['nombre'], request.method['curp'], request.method['usuario'], request.method['contraseña'])
             conn.commit()
 
-            flash('Registro exitoso', 'success')
             return redirect(url_for('main.login'))
-        except mariadb.Error as e:
+        except Exception as e:
             flash('Error al registrar', 'error')
             return render_template("registro.html")
+
+    return render_template("registro.html")
 
 
 @main.route("/login", methods=['GET', 'POST'])
