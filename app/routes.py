@@ -17,7 +17,13 @@ def registro_admin() -> Response | Any:
             conn = connection()
             cur = conn.cursor()
 
-            cur.callproc('PROC_InsertAdministrador', [request.method['nombre'], request.method['curp'], request.method['username'], request.method['password']])
+            # Obtener id del comedor seleccionado
+            comedor_seleccionado = request.form['comedor']
+            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+            id_comedor = cur.fetchone()[0]
+
+
+            cur.callproc('PROC_InsertAdministrador', [id_comedor, request.form['nombre'], request.form['curp'], request.form['username'], request.form['password']])
             conn.commit()
 
             return redirect(url_for('main.login'))
@@ -27,7 +33,6 @@ def registro_admin() -> Response | Any:
             return render_template("registro.html")
 
     return render_template("registro.html")
-
 
 @main.route("/login", methods=['GET', 'POST'])
 def login() -> Response | Any:

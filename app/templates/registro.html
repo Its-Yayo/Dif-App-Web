@@ -24,6 +24,14 @@
         <form action="/registro_admin" method="post" class="login-form">
             <h2>Bienvenido</h2>
             <img class="logo" src="../templates/images/dif_logo.jpg" width="250px">
+
+             <!-- Menú desplegable para seleccionar el comedor -->
+            <label for="comedor">Comedor:</label>
+            <select id="comedor" name="comedor">
+                <option value="Comedor 1">Comedor 1</option>
+                <option value="Comedor 2">Comedor 2</option>
+                <option value="Comedor 3">Comedor 3</option>
+            </select>
             
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
