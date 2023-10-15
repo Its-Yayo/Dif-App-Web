@@ -12,10 +12,22 @@ main = Blueprint('main', __name__, template_folder='app/templates')
 
 @main.route("/registro_admin", methods=['GET', 'POST'])
 def registro_admin() -> Response | Any:
-    ...
+    if request.method == 'POST':
+        try:
+            conn = connection()
+            cur = conn.cursor()
+
+            cur.callproc('PROC_RegistrarAdministrador', request.method['nombre'], request.method['curp] request.method['usuario'], request.method['contraseña'])
+            conn.commit()
+
+            flash('Registro exitoso', 'success')
+            return redirect(url_for('main.login'))
+        except mariadb.Error as e:
+            flash('Error al registrar', 'error')
+            return render_template("registro.html")
 
 
-@main.route("/login", methods=['GET', 'POST'])
+@main.route("/login", methods=['GET', 'POST']))
 def login() -> Response | Any:
     if request.method == 'POST':
         conn = connection()
