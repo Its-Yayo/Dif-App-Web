@@ -46,12 +46,12 @@ def login() -> Response | Any:
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_LoginAdministrador', request.form['username'], request.form['password'])
+        cur.callproc('PROC_LoginAdministrador', (request.form['username'], request.form['password']))
         result = cur.fetchone()
 
         if result and result[0] == 1:
             flash('Inicio de sesión exitoso', 'success')
-            return redirect(url_for('tablero'))
+            return redirect(url_for('main.tablero'))
         else:
             flash('Credenciales incorrectas. Inténtalo de nuevo.', 'error')
 
