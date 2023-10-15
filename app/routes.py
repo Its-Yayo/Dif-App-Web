@@ -245,7 +245,7 @@ def inventario_lista(idComedor: int) -> Response | str:
         return render_template('inventario.html', inventario_lista=inventario_lista)
 
 
-# TODO: APIs de las Apps móviles
+# TODO: APIs de la App de Administrador
 @main.route("/login_app", methods=['POST'])
 def login_app() -> Response | Any:
     data = request.get_json()
