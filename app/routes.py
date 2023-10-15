@@ -278,29 +278,31 @@ def login_app() -> Response | Any:
             'message': 'Inicio de sesión exitoso',
             'status': 'success'
         }
-        return jsonify(response), 200
+        return jsonify(response), 201
     else:
         response = {
             'message': 'Credenciales incorrectas. Inténtalo de nuevo.',
             'status': 'error'
         }
-        return jsonify(response), 401
+        return jsonify(response), 400
 
 
 @main.route("/registrar_cliente", methods=['POST'])
 def registrar_cliente():
+    data = request.get_json()
+
     try:
-        if 'curp' in request.form:
-            curp = request.form['curp']
+        if 'curp' in data:
+            curp = data['curp']
         else:
             curp = None
 
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        edad = request.form['edad']
-        genero = request.form['genero']
-        circunstancia = request.form['circunstancia']
-        rol = request.form['rol']
+        nombre = data['nombre']
+        apellido = data['apellido']
+        edad = data['edad']
+        genero = data['genero']
+        circunstancia = data['circunstancia']
+        rol = data['rol']
 
         conn = connection()
         cur = conn.cursor()
