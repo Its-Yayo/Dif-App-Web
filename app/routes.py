@@ -17,7 +17,7 @@ def registro_admin() -> Response | Any:
             conn = connection()
             cur = conn.cursor()
 
-            cur.callproc('PROC_RegistrarAdministrador', request.method['nombre'], request.method['curp] request.method['usuario'], request.method['contraseña'])
+            cur.callproc('PROC_RegistrarAdministrador', request.method['nombre'], request.method['curp'], request.method['usuario'], request.method['contraseña'])
             conn.commit()
 
             flash('Registro exitoso', 'success')
