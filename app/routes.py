@@ -10,6 +10,11 @@ import mariadb
 main = Blueprint('main', __name__, template_folder='app/templates')
 
 
+@main.route("/registro_admin", methods=['GET', 'POST'])
+def registro_admin() -> Response | Any:
+    ...
+
+
 @main.route("/login", methods=['GET', 'POST'])
 def login() -> Response | Any:
     if request.method == 'POST':
@@ -253,7 +258,7 @@ def login_app() -> Response | Any:
     conn = connection()
     cur = conn.cursor()
 
-    cur.callproc('PROC_Login', data['usuario'], data['contraseña'])
+    cur.callproc('PROC_LoginAdministrador', data['usuario'], data['contraseña'])
     usuario_final = cur.fetchone()
 
     if usuario_final and usuario_final[0] == 1:
@@ -304,6 +309,57 @@ def registrar_cliente():
             'error': str(e)
         }
         return jsonify(response), 500
+
+
+@main.route("/mostrar_entregas/<idComedor>", methods=['GET'])
+def mostrar_entregas(idComedor: int):
+    try:
+        conn = connection()
+        cur = conn.cursor()
+        cur.callproc('PROC_MostrarEntregas', idComedor)
+        entregas = cur.fetchall()
+        conn.close()
+
+        response = {
+            'message': 'Entregas mostradas exitosamente',
+            'status': 'success',
+            'entregas': entregas
+        }
+        return jsonify(response), 200
+
+    except Exception as e:
+        response = {
+            'message': 'Error al mostrar entregas',
+            'status': 'error',
+            'error': str(e)
+        }
+        return jsonify(response), 500
+
+
+@main.route("/mostrar_donativos/<idComedor>", methods=['GET'])
+def mostrar_donativos(idComedor: int):
+    try:
+        conn = connection()
+        cur = conn.cursor()
+        cur.callproc('PROC_MostrarDonativos', idComedor)
+        donativos = cur.fetchall()
+        conn.close()
+
+        response = {
+            'message': 'Donativos mostrados exitosamente',
+            'status': 'success',
+            'donativos': donativos
+        }
+        return jsonify(response), 200
+
+    except Exception as e:
+        response = {
+            'message': 'Error al mostrar donativos',
+            'status': 'error',
+            'error': str(e)
+        }
+        return jsonify(response), 500
+
 
 
 # --------------------------------------------
