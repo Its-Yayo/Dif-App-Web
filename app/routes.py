@@ -21,7 +21,7 @@ def login() -> Response | Any:
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_Login', request.form['usuario'], request.form['contraseña'])
+        cur.callproc('PROC_LoginAdministrador', request.form['usuario'], request.form['contraseña'])
         usuario_final = cur.fetchone()
 
         if usuario_final and usuario_final[0] == 1:
@@ -41,7 +41,7 @@ def cerrar_sesion() -> Response:
 
 @main.route("/tablero", methods=['GET'])
 def tablero() -> None:
-    render_template('tablero.html')
+    render_template('home.html')
 
 
 # TODO: Implementation
@@ -54,7 +54,7 @@ def tablero_afluencia(idComedor: int) -> Response | str:
         cur.callproc('PROC_TableroAfluencia', idComedor)
         afluencia = cur.fetchone()
 
-        return render_template('tablero.html', afluencia=afluencia)
+        return render_template('home.html', afluencia=afluencia)
 
 
 # TODO: Implementation
@@ -67,7 +67,7 @@ def tablero_recaudacion() -> Response | str:
         cur.callproc('PROC_TableroRecaudacion')
         recaudacion = cur.fetchone()
 
-        return render_template('tablero.html', recaudacion=recaudacion)
+        return render_template('home.html', recaudacion=recaudacion)
 
 
 # TODO: Implementation
@@ -80,7 +80,7 @@ def tablero_afluencia_year() -> Response | str:
         cur.callproc('PROC_TableroAfluenciaAño')
         afluencia_year = cur.fetchone()
 
-        return render_template('tablero.html', afluencia_year=afluencia_year)
+        return render_template('home.html', afluencia_year=afluencia_year)
 
 
 # TODO: Implementation
@@ -93,7 +93,7 @@ def tablero_comedores() -> Response | str:
         cur.callproc('PROC_TableroAfluenciaComedores')
         afluencia_comedores = cur.fetchone()
 
-        return render_template('tablero.html', afluencia_comedores=afluencia_comedores)
+        return render_template('home.html', afluencia_comedores=afluencia_comedores)
 
 
 # TODO: Implementation
@@ -144,7 +144,7 @@ def afluencia_predicciones(idComedor: int) -> Response | str:
 # TODO: Implementation
 @main.route("/recaudaciones", methods=['GET'])
 def recaudaciones() -> None:
-    render_template('recaudaciones.html')
+    render_template('recaudacion.html')
 
 
 # TODO: Implementation
@@ -157,7 +157,7 @@ def recaudaciones_registros(idComedor: int, tiempo: str) -> Response | str:
         cur.callproc('PROC_RecaudacionesRegistros', idComedor, tiempo)
         recaudaciones = cur.fetchone()
 
-        return render_template('recaudaciones.html', recaudaciones=recaudaciones)
+        return render_template('recaudacion.html', recaudaciones=recaudaciones)
 
 
 # TODO: Implementation
@@ -170,7 +170,7 @@ def recaudaciones_donaciones(idComedor: int) -> Response | str:
         cur.callproc('PROC_RecaudacionesDonaciones', idComedor)
         recaudaciones_donaciones = cur.fetchone()
 
-        return render_template('recaudaciones.html', recaudaciones_donaciones=recaudaciones_donaciones)
+        return render_template('recaudacion.html', recaudaciones_donaciones=recaudaciones_donaciones)
 
 
 # TODO: Implementation
@@ -183,7 +183,7 @@ def recaudaciones_ventas(idComedor: int) -> Response | str:
         cur.callproc('PROC_RecaudacionesVentas', idComedor)
         recaudaciones_ventas = cur.fetchone()
 
-        return render_template('recaudaciones.html', recaudaciones_ventas=recaudaciones_ventas)
+        return render_template('recaudacion.html', recaudaciones_ventas=recaudaciones_ventas)
 
 
 # TODO: Implementation
@@ -196,7 +196,7 @@ def recaudaciones_lista_donaciones() -> Response | str:
         cur.callproc('PROC_RecaudacionesListaDonaciones')
         recaudaciones_lista_donaciones = cur.fetchone()
 
-        return render_template('recaudaciones.html', recaudaciones_lista_donaciones=recaudaciones_lista_donaciones)
+        return render_template('recaudacion.html', recaudaciones_lista_donaciones=recaudaciones_lista_donaciones)
 
 
 # TODO: Implementation
@@ -209,7 +209,7 @@ def recaudaciones_lista_ventas() -> Response | str:
         cur.callproc('PROC_RecaudacionesListaVentas')
         recaudaciones_lista_ventas = cur.fetchone()
 
-        return render_template('recaudaciones.html', recaudaciones_lista_ventas=recaudaciones_lista_ventas)
+        return render_template('recaudacion.html', recaudaciones_lista_ventas=recaudaciones_lista_ventas)
 
 
 # TODO: Implementation
