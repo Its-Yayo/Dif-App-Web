@@ -8,6 +8,19 @@
 </head>
 <body>
     <div class="login-container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
         <form action="/registro_admin" method="post" class="login-form">
             <h2>Bienvenido</h2>
             <img class="logo" src="../templates/images//dif_logo.jpg" width="250px">

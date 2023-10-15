@@ -8,9 +8,22 @@
 </head>
 <body>
     <div class="login-container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
         <form action="/login" method="post" class="login-form">
             <h2>Bienvenido de vuelta!</h2>
-            <img class="logo" src="../templates/images/dif_logo.jpg" width="250px">
+            <img class="logo" src="images/dif_logo.jpg" width="250px">
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required>
 
@@ -19,6 +32,9 @@
 
             <button type="submit">Iniciar Sesión</button>
         </form>
+        <div class="register-link">
+            <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+        </div>
     </div>
 </body>
 </html>

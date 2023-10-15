@@ -33,10 +33,10 @@ def login() -> Response | Any:
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_LoginAdministrador', request.form['usuario'], request.form['contraseña'])
-        usuario_final = cur.fetchone()
+        cur.callproc('PROC_LoginAdministrador', request.form['username'], request.form['password'])
+        result = cur.fetchone()
 
-        if usuario_final and usuario_final[0] == 1:
+        if result and result[0] == 1:
             flash('Inicio de sesión exitoso', 'success')
             return redirect(url_for('tablero'))
         else:
