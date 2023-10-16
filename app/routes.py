@@ -17,17 +17,9 @@ def registro_admin() -> Response | Any:
             conn = connection()
             cur = conn.cursor()
 
-            # Obtener id del comedor seleccionado
             comedor_seleccionado = request.form['comedor']
             cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
             id_comedor = cur.fetchone()[0]
-
-            # Imprimir valores para depuración
-            print("ID del Comedor:", id_comedor)
-            print("Nombre:", request.form['nombre'])
-            print("CURP:", request.form['curp'])
-            print("Usuario:", request.form['username'])
-            print("Contraseña:", request.form['password'])
 
             cur.callproc('PROC_InsertAdministrador', [id_comedor, request.form['nombre'], request.form['curp'], request.form['username'], request.form['password']])
             conn.commit()
@@ -86,62 +78,48 @@ def tablero_afluencia(idComedor: int) -> Response | str:
 
 
 
-# TODO: Implementation
 @main.route("/tablero/recaudacion/<int:idComedor>", methods=['GET'])
-def tablero_recaudacion(idComedor: int) -> Response | str:
+def tablero_recaudacion(idComedor: int):
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroRecaudacion', (idComedor,))
+        cur.callproc('PROC_TableroRecaudacion', [idComedor])
         recaudacion = cur.fetchone()
 
-        return render_template('home.html', recaudacion=recaudacion)
+        if recaudacion:
+            return render_template('home.html', recaudacion=recaudacion[0])
+        else:
+            return render_template('home.html', error_message="No se encontraron registros de recaudación para este comedor.")
 
-
-# TODO: Implementation
 @main.route("/tablero/afluencia_mes/<int:idComedor>", methods=['GET'])
-def tablero_afluencia_mes(idComedor: int) -> Response | str:
+def tablero_afluencia_mes(idComedor: int):
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroAfluenciaAño')
-        afluencia_year = cur.fetchone()
+        cur.callproc('PROC_TableroAfluenciaMes', [idComedor])
+        afluencia_mes = cur.fetchall()
 
-        return render_template('home.html', afluencia_year=afluencia_year)
+        if afluencia_mes:
+            return render_template('home.html', afluencia_mes=afluencia_mes)
+        else:
+            return render_template('home.html', error_message="No se encontraron registros de afluencia mensual para este comedor.")
 
-
-# TODO: Implementation
-@main.route("/afluencia", methods=['GET'])
-def afluencia() -> None:
-    return render_template('afluencia.html')
-
-
-# TODO: Implementation
-@main.route("/afluencia/<idComedor>/<tiempo>", methods=['GET'])
-def afluencia_registros(idComedor: int, tiempo: str) -> Response | str:
+@main.route("/tablero/inscritos/<int:idComedor>", methods=['GET'])
+def tablero_inscritos(idComedor: int):
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_AfluenciaRegistros', idComedor, tiempo)
-        afluencia = cur.fetchone()
+        cur.callproc('PROC_TableroInscritos', [idComedor])
+        inscritos = cur.fetchall()
+        cur.close()
 
-        return render_template('afluencia.html', afluencia=afluencia)
-
-
-# TODO: Implementation
-@main.route("/afluencia/inscritos/<idComedor>", methods=['GET'])
-def afluencia_inscritos(idComedor: int) -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        cur.callproc('PROC_AfluenciaInscritos', idComedor)
-        afluencia_inscritos = cur.fetchone()
-
-        return render_template('afluencia.html', afluencia_inscritos=afluencia_inscritos)
+        if inscritos:
+            return render_template('home.html', inscritos=inscritos)
+        else:
+            return render_template('home.html', error_message="No se encontraron empleados registrados para este comedor.")
 
 
 # TODO: Implementation
