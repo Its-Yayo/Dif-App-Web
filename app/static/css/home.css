@@ -134,8 +134,8 @@ nav a {
 .Dashb_container, .recaudacion_container, .inventario_container,
 .informe_container{
     margin-top: 25px;
-    margin-left: 250px;
-    margin-right: 250px;
+    margin-left: 180px;
+    margin-right: 180px;
     height: 70%;
     display: grid;
     gap: 30px;
@@ -197,7 +197,7 @@ nav a {
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 9fr;
     gap: 0;
 }
 
@@ -217,12 +217,12 @@ nav a {
 
 .encabezado{
     grid-row: 1;
-    grid-column: auto;
+    grid-column: auto ;
 }
 
 .content{
     background-color: antiquewhite;
-    grid-row: 2 / span 4;
+    grid-row: 2;
     grid-column: 1 / span 3;
 }
 
