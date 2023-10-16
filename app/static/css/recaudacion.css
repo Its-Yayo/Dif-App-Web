@@ -122,11 +122,6 @@ a.logo_Atzp, .profile_nav:hover{
     justify-content: space-between;
 }
 
-#comedores{
-    max-height: 250px;
-    overflow-y: scroll;
-}
-
 nav a {
     text-decoration: none;
     font-style: oblique;
@@ -136,5 +131,29 @@ nav a {
     height: 130vh;
 }
 
+.Dashb_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: "header header header";
+    grid-auto-rows: minmax(150px, 1fr);
+    margin-top: 25px;
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 80%;
+    gap: 30px;
+    align-content: center;
+}
+
+.item-1, .item-2, .item-3{
+    border: 2px black solid;
+    border-radius: 9px;
+    padding: 15px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 9fr;
+    gap: 0;
+}
 
 

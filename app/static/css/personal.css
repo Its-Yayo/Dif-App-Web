@@ -133,7 +133,6 @@ nav a {
     height: 130vh;
     margin-left: 0;
     transition: margin-left 0.5s;
-    align-content: center;
 }
 
 .container{
@@ -159,15 +158,25 @@ nav a {
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
     margin-left: 350px;
     margin-right: 350px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 18fr;
+    gap: 0;
 }
 
 .filter_btn{
     color: black;
 }
 
+.encabezado{
+    grid-row: 1;
+    grid-column: auto;
+}
+
 .content{
+    grid-row: 2;
+    grid-column: 1 / span 3;
     margin: 15px;
-    height: 90%; /* **** */
     padding: 10px;
     background-color: rgb(93, 230, 230);
 }
