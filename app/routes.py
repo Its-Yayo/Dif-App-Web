@@ -246,7 +246,7 @@ def personal_lista(idComedor: int) -> Response | str:
 # TODO: Implementation
 @main.route("/invetario", methods=['GET'])
 def inventario() -> None:
-    render_template('inventario.html')
+    return render_template('inventario.html')
 
 
 # TODO: Implementation
