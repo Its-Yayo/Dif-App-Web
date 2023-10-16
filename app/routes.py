@@ -87,21 +87,21 @@ def tablero_afluencia(idComedor: int) -> Response | str:
 
 
 # TODO: Implementation
-@main.route("/tablero/recaudacion", methods=['GET'])
-def tablero_recaudacion() -> Response | str:
+@main.route("/tablero/recaudacion/<int:idComedor>", methods=['GET'])
+def tablero_recaudacion(idComedor: int) -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroRecaudacion')
+        cur.callproc('PROC_TableroRecaudacion', (idComedor,))
         recaudacion = cur.fetchone()
 
         return render_template('home.html', recaudacion=recaudacion)
 
 
 # TODO: Implementation
-@main.route("/tablero/afluencia_año", methods=['GET'])
-def tablero_afluencia_year() -> Response | str:
+@main.route("/tablero/afluencia_mes/<int:idComedor>", methods=['GET'])
+def tablero_afluencia_mes(idComedor: int) -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
@@ -145,35 +145,9 @@ def afluencia_inscritos(idComedor: int) -> Response | str:
 
 
 # TODO: Implementation
-@main.route("/afluencia/predicciones/idComedor>", methods=['GET'])
-def afluencia_predicciones(idComedor: int) -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        cur.callproc('PROC_AfluenciaPredicciones', idComedor)
-        afluencia_predicciones = cur.fetchone()
-
-        return render_template('afluencia.html', afluencia_predicciones=afluencia_predicciones)
-
-
-# TODO: Implementation
 @main.route("/recaudaciones", methods=['GET'])
 def recaudaciones() -> None:
     return render_template('recaudacion.html')
-
-
-# TODO: Implementation
-@main.route("/recaudaciones/<idComedor>/<tiempo>", methods=['GET'])
-def recaudaciones_registros(idComedor: int, tiempo: str) -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        cur.callproc('PROC_RecaudacionesRegistros', idComedor, tiempo)
-        recaudaciones = cur.fetchone()
-
-        return render_template('recaudacion.html', recaudaciones=recaudaciones)
 
 
 # TODO: Implementation
@@ -203,32 +177,6 @@ def recaudaciones_ventas(idComedor: int) -> Response | str:
 
 
 # TODO: Implementation
-@main.route("/recaudaciones/lista_donaciones/", methods=['GET'])
-def recaudaciones_lista_donaciones() -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        cur.callproc('PROC_RecaudacionesListaDonaciones')
-        recaudaciones_lista_donaciones = cur.fetchone()
-
-        return render_template('recaudacion.html', recaudaciones_lista_donaciones=recaudaciones_lista_donaciones)
-
-
-# TODO: Implementation
-@main.route("/recaudaciones/lista_ventas/", methods=['GET'])
-def recaudaciones_lista_ventas() -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        cur.callproc('PROC_RecaudacionesListaVentas')
-        recaudaciones_lista_ventas = cur.fetchone()
-
-        return render_template('recaudacion.html', recaudaciones_lista_ventas=recaudaciones_lista_ventas)
-
-
-# TODO: Implementation
 @main.route("/personal", methods=['GET'])
 def personal() -> None:
     return render_template('personal.html')
@@ -254,7 +202,7 @@ def inventario() -> None:
 
 
 # TODO: Implementation
-@main.route("/inventario/lista_inventario/<idComedor>", methods=['GET'])
+@main.route("/inventario/<idComedor>", methods=['GET'])
 def inventario_lista(idComedor: int) -> Response | str:
     if request.method == 'GET':
         conn = connection()
