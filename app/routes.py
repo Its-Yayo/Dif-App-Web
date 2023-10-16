@@ -70,16 +70,23 @@ def tablero() -> Response:
 
 
 # TODO: Implementation
-@main.route("/tablero/afluencia/<string:idComedor>", methods=['GET'])
+@main.route("/tablero/afluencia/<int:idComedor>", methods=['GET'])
 def tablero_afluencia(idComedor: int) -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroAfluencia', idComedor)
+        # Llamar al stored procedure
+        cur.callproc('PROC_TableroAfluencia', (idComedor,))
+
+        # Obtener el resultado
         afluencia = cur.fetchone()
 
-        return render_template('home.html', afluencia=afluencia)
+        if afluencia:
+            return render_template('home.html', afluencia=afluencia[0])
+        else:
+            return "No se encontraron registros de afluencia para este comedor. "
+
 
 
 # TODO: Implementation
