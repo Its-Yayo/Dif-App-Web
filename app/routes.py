@@ -111,7 +111,7 @@ def tablero_afluencia_year() -> Response | str:
 # TODO: Implementation
 @main.route("/afluencia", methods=['GET'])
 def afluencia() -> None:
-    render_template('afluencia.html')
+    return render_template('afluencia.html')
 
 
 # TODO: Implementation
@@ -156,7 +156,7 @@ def afluencia_predicciones(idComedor: int) -> Response | str:
 # TODO: Implementation
 @main.route("/recaudaciones", methods=['GET'])
 def recaudaciones() -> None:
-    render_template('recaudacion.html')
+    return render_template('recaudacion.html')
 
 
 # TODO: Implementation
@@ -227,7 +227,7 @@ def recaudaciones_lista_ventas() -> Response | str:
 # TODO: Implementation
 @main.route("/personal", methods=['GET'])
 def personal() -> None:
-    render_template('personal.html')
+    return render_template('personal.html')
 
 
 # TODO: Implementation
