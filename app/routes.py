@@ -65,8 +65,8 @@ def cerrar_sesion() -> Response:
 
 
 @main.route("/tablero", methods=['GET'])
-def tablero() -> None:
-    render_template('home.html')
+def tablero() -> Response:
+    return render_template('home.html')
 
 
 # TODO: Implementation
