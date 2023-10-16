@@ -3,6 +3,27 @@
 
 {% block body %}
 
+<div class="dropdown">
+    <a href="" class="profile_nav">
+        <img class="img_comedor" alt="Comedor" src="../templates/images/comedor_icn.jpg" width="60px">
+        <span class="user_name">
+            Comedor
+
+                <!--Depende de la base de datos-->
+            <div class="dropdown-content" id="comedores">
+                <div class="search_icn">
+                    <img src="../images/search3.png" alt="search" width="20px">
+                </div>
+                <a href="">Comedor 1</a>
+                <a href="">Comedor 2</a>
+                <a href="">Comedor 3</a>
+                <a href="">Comedor 4</a>
+                
+            </div>
+        </span>
+    </a>
+</div>
+
 
     <!-- Contenido de las secciones -->
 <div class="dashboard">
@@ -20,11 +41,6 @@
             </form>
         </div>
         
-        <form action="" method="get">
-            <div class="item-3" id="comidas">
-                Comidas repartidas de todos los comedores | Día
-            </div>
-        </form>
         
         <form action="" method="get">
             <div class="item-4" id="afluencia_mes">

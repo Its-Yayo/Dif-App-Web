@@ -109,19 +109,6 @@ def tablero_afluencia_year() -> Response | str:
 
 
 # TODO: Implementation
-@main.route("/tablero/afluencia_comedores", methods=['GET'])
-def tablero_comedores() -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        cur.callproc('PROC_TableroAfluenciaComedores')
-        afluencia_comedores = cur.fetchone()
-
-        return render_template('home.html', afluencia_comedores=afluencia_comedores)
-
-
-# TODO: Implementation
 @main.route("/afluencia", methods=['GET'])
 def afluencia() -> None:
     render_template('afluencia.html')
