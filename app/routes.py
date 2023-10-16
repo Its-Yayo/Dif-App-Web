@@ -76,16 +76,13 @@ def tablero_afluencia(idComedor: int) -> Response | str:
         conn = connection()
         cur = conn.cursor()
 
-        # Llamar al stored procedure
         cur.callproc('PROC_TableroAfluencia', (idComedor,))
-
-        # Obtener el resultado
         afluencia = cur.fetchone()
 
         if afluencia:
             return render_template('home.html', afluencia=afluencia[0])
         else:
-            return "No se encontraron registros de afluencia para este comedor. "
+            return render_template('home.html', error_message="No se encontraron registros de afluencia para este comedor.")
 
 
 
