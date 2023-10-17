@@ -7,7 +7,7 @@ body {
 }
 
 body.side-nav-open{
-    margin-left: 250px; /* Ancho del sidenav */
+    margin-left: 70px; /* Ancho del sidenav */
     transition: margin-left 0.3s ease-in-out;
 }
 
@@ -49,7 +49,7 @@ header {
     left: -250px;
     top: 0;
     transition: left 0.3s ease-in-out;
-    margin-top: 90px;
+    margin-top: 80px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
     font-size: 20px;
 }
@@ -134,13 +134,12 @@ nav a {
 .Dashb_container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
-    grid-template-areas: "header header header";
+    grid-template-rows: 1fr 9fr;
     grid-auto-rows: minmax(150px, 1fr);
     margin-top: 25px;
-    margin-left: 200px;
-    margin-right: 200px;
-    height: 80%;
+    margin-left: 400px;
+    margin-right: 400px;
+    height: 60%;
     gap: 30px;
     align-content: center;
 }
@@ -154,6 +153,36 @@ nav a {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 9fr;
     gap: 0;
+}
+
+.item-1{
+    grid-row: auto;
+    grid-column: auto;
+}
+
+.item-2{
+    grid-row: auto;
+    grid-column: auto;
+}
+
+.item-3{
+    grid-row: 2 / span 2;
+    grid-column: 1 / span 2;
+}
+
+#sub-item1, #sub-item2, #sub-item3{
+    text-align: end;
+}
+
+.encabezado{
+    grid-row: 1;
+    grid-column: auto ;
+}
+
+.content{
+    background-color: antiquewhite;
+    grid-row: 2;
+    grid-column: 1 / span 3;
 }
 
 
