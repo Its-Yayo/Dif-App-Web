@@ -213,15 +213,20 @@ def personal_lista(idComedor: int) -> Response | str:
         id_comedor = cur.fetchone()[0]
 
         cur.callproc('PROC_PersonalLista', idComedor)
-        personal_lista = cur.fetchone()
+        personal = cur.fetchall()
 
-        return render_template('personal.html', personal_lista=personal_lista)
+        return render_template('personal.html', personal_lista=personal)
 
 
 # TODO: Implementation
 @main.route("/inventario", methods=['GET'])
 def inventario() -> None:
     return render_template('inventario.html')
+
+
+@main.route("/inventario_lista", methods=['GET'])
+def inventario_lista() -> Response | str:
+    ...
 
 
 # TODO: APIs de la App de Administrador
