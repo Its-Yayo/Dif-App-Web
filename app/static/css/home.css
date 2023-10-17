@@ -196,6 +196,11 @@ nav a {
     grid-column: auto ;
 }
 
+
+
+
+
+
 .content{
     background-color: antiquewhite;
     grid-row: 2;
@@ -212,10 +217,11 @@ nav a {
     grid-column: 3 / 5;
 }
 
-#comedores{
-    max-height: 250px;
-    overflow-y: scroll;
+#comedores {
+    max-height: 100px; /* Establece una altura máxima */
+    overflow-y: scroll; /* Agrega una barra de desplazamiento vertical si es necesario */
 }
+
 
 /* Para variables de la base de datos */
 
