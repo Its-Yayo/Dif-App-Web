@@ -62,15 +62,14 @@ def tablero() -> Response:
 
 
 # TODO: Implementation
-@main.route("/tablero_afluencia", methods=['POST'])
+@main.route("/tablero_afluencia", methods=['GET'])
 def tablero_afluencia() -> Response | Any:
-    if request.method == 'POST':
+    if request.method == 'GET':
         try:
             conn = connection()
             cur = conn.cursor()
 
-            comedor_seleccionado = request.form['comedor']
-
+            comedor_seleccionado = request.args.get('comedor')
             cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
             id_comedor = cur.fetchone()[0]
 
@@ -79,22 +78,22 @@ def tablero_afluencia() -> Response | Any:
 
             afluencia_personas = result[0]
 
-            return render_template("tablero.html", afluencia_personas=afluencia_personas)
+            return jsonify({'afluencia_dia': afluencia_personas})
         except Exception as e:
             flash('Error al obtener la afluencia', 'error')
             print(e)  # Mensaje de depuración
-            return render_template("tablero.html")
+            return jsonify({'error': 'Error al obtener la afluencia'})
 
-    return render_template("tablero.html")
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
-@main.route("/tablero/recaudacion/<int:idComedor>", methods=['GET'])
-def tablero_recaudacion(idComedor: int):
+@main.route("/tablero_recaudacion", methods=['GET'])
+def tablero_recaudacion():
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroRecaudacion', [idComedor])
+        cur.callproc('PROC_TableroRecaudacion')
         recaudacion = cur.fetchone()
 
         if recaudacion:
