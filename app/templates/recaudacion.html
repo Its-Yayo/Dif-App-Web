@@ -13,7 +13,7 @@
 
         <div class="item-1" id="donaciones">
             <div class="encabezado" id="encabezado1">Donaciones</div>
-            <form action="" method="get" class="sub-grid" id="sub-item1">
+            <form action="/recaudaciones_ventas" method="get" class="sub-grid" id="sub-item1">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
                     <option value="Comedor A">Comedor A</option>
@@ -37,7 +37,7 @@
                 </select>
             </form>
             <div class="content" id="content1">
-
+                <span id="ventas-value">{{ ventas_totales }}</span>
             </div>
         </div>
 
@@ -67,7 +67,7 @@
                 </select>
             </form>
             <div class="content" id="content2">
-
+                <span id="donaciones-value">{{ donaciones_totales }}</span>
             </div>
         </div>
 
