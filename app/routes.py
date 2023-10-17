@@ -62,20 +62,30 @@ def tablero() -> Response:
 
 
 # TODO: Implementation
-@main.route("/tablero/afluencia/<int:idComedor>", methods=['GET'])
-def tablero_afluencia(idComedor: int) -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
+@main.route("/tablero_afluencia", methods=['POST'])
+def tablero_afluencia() -> Response | Any:
+    if request.method == 'POST':
+        try:
+            conn = connection()
+            cur = conn.cursor()
 
-        cur.callproc('PROC_TableroAfluencia', (idComedor,))
-        afluencia = cur.fetchone()
+            comedor_seleccionado = request.form['comedor']
 
-        if afluencia:
-            return render_template('home.html', afluencia=afluencia[0])
-        else:
-            return render_template('home.html', error_message="No se encontraron registros de afluencia para este comedor.")
+            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+            id_comedor = cur.fetchone()[0]
 
+            cur.callproc('PROC_TableroAfluencia', [id_comedor])
+            result = cur.fetchone()
+
+            afluencia_personas = result[0]
+
+            return render_template("tablero.html", afluencia_personas=afluencia_personas)
+        except Exception as e:
+            flash('Error al obtener la afluencia', 'error')
+            print(e)  # Mensaje de depuración
+            return render_template("tablero.html")
+
+    return render_template("tablero.html")
 
 
 @main.route("/tablero/recaudacion/<int:idComedor>", methods=['GET'])

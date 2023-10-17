@@ -13,7 +13,7 @@
     <div class="Dashb_container">
         <div class="item-1" id="afluencia_dia">
             <div class="encabezado" id="encabezado1">Afluencia hoy</div>
-            <form action="/tablero/afluencia/{{ idComedor }}" method="get" class="sub-grid" id="sub-item1">
+            <form action="/tablero_afluencia" method="get" class="sub-grid" id="sub-item1">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
                     <option value="Comedor A">Comedor A</option>
@@ -35,11 +35,11 @@
                     <option value="Comedor Q">Comedor Q</option>
                     <option value="Comedor R">Comedor R</option>
                 </select>
-                <div class="content" id="content1">
-                    <!-- Aquí puedes mostrar los datos de afluencia -->
-                    {{ afluencia_dia }}
-                </div>
             </form>
+            <div class="content" id="content1">
+                <!-- Aquí puedes mostrar los datos de afluencia -->
+                {{ afluencia_dia }}
+            </div>
         </div>
 
         <div class="item-2" id="recaudacion_dia">
@@ -143,4 +143,10 @@
 </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/script_afluenciadia.js"></script>
+    <script src="../static/js/script_recaudaciondia.js"></script>
+    <script src="../static/js/script_afluenciames.js"></script>
 {% endblock %}
