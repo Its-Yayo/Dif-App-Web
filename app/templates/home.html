@@ -44,7 +44,7 @@
 
         <div class="item-2" id="recaudacion_dia">
             <div class="encabezado" id="encabezado2">Recaudación hoy</div>
-            <form action="/tablero/recaudacion/{{ idComedor }}" method="get" class="sub-grid" id="sub-item2">
+            <form action="/tablero_recaudacion" method="get" class="sub-grid" id="sub-item2">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
                     <option value="Comedor A">Comedor A</option>
@@ -68,8 +68,7 @@
                 </select>
 
                 <div class="content" id="content2">
-                    <!-- Aquí puedes mostrar los datos de recaudación -->
-                    {{ recaudacion_dia }}
+                    <span id="recaudacion-value">{{ recaudacion_dia }}</span>
                 </div>
             </form>
         </div>
