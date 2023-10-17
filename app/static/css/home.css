@@ -4,10 +4,12 @@ body {
     font-family: Arial, sans-serif;
     margin-top: 150px;
     transition: margin-left 0.3s ease-in-out;
+    background: #eef1f7;
+    background: #f4f4f4;
 }
 
 body.side-nav-open{
-    margin-left: 250px; /* Ancho del sidenav */
+    margin-left: 118px; /* Ancho del sidenav */
     transition: margin-left 0.3s ease-in-out;
 }
 
@@ -165,7 +167,7 @@ nav a {
 
 
 .item-1, .item-2, .item-3, .item-4, .item-inventario{
-    border: 2px black solid;
+    background-color: white;
     border-radius: 9px;
     padding: 15px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
@@ -213,5 +215,17 @@ nav a {
 #comedores{
     max-height: 250px;
     overflow-y: scroll;
+}
+
+/* Para variables de la base de datos */
+
+#content1, #content2, #content3, #content4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#afluencia-value, #recaudacion-value{
+    font-size: 30px;
 }
 
