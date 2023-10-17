@@ -130,19 +130,16 @@
             </form>
             <div class="content" id="content4">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Edad</th>
-                        </tr>
-                    <tbody>
-                        {% for empleado in empleados %}
-                            <tr>
-                                <th>{{ empleado.nombre }}</th>
-                                <th>{{ empleado.edad }}</th>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                    </tr>
+                    {% for empleado in empleados %}
+                    <tr>
+                        <td>{{ empleado.nombre }}</td>
+                        <td>{{ empleado.edad }}</td>
+                    </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>

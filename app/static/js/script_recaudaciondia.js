@@ -1,6 +1,7 @@
 /* /usr/env/node node */
 
 function actualizarRecaudacionDiaria() {
+    console.log("La funcion actualizarRecaudacionDiaria se ha ejecutado");
     const comedorId = document.getElementById("comedor").value;
 
     fetch(`/tablero_recaudacion?comedor=${comedorId}`)
