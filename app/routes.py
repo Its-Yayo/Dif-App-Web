@@ -93,7 +93,11 @@ def tablero_recaudacion():
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroRecaudacion')
+        comedor_seleccionado = request.args.get('comedor')
+        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+        id_comedor = cur.fetchone()[0]
+
+        cur.callproc('PROC_TableroRecaudacion', [id_comedor])
         recaudacion = cur.fetchone()
 
         if recaudacion:
@@ -101,13 +105,17 @@ def tablero_recaudacion():
         else:
             return render_template('home.html', error_message="No se encontraron registros de recaudación para este comedor.")
 
-@main.route("/tablero/afluencia_mes/<int:idComedor>", methods=['GET'])
-def tablero_afluencia_mes(idComedor: int):
+@main.route("/tablero_afluencia_mes", methods=['GET'])
+def tablero_afluencia_mes() -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroAfluenciaMes', [idComedor])
+        comedor_seleccionado = request.args.get('comedor')
+        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+        id_comedor = cur.fetchone()[0]
+
+        cur.callproc('PROC_TableroAfluenciaMes', [id_comedor])
         afluencia_mes = cur.fetchall()
 
         if afluencia_mes:
@@ -115,13 +123,17 @@ def tablero_afluencia_mes(idComedor: int):
         else:
             return render_template('home.html', error_message="No se encontraron registros de afluencia mensual para este comedor.")
 
-@main.route("/tablero/inscritos/<int:idComedor>", methods=['GET'])
-def tablero_inscritos(idComedor: int):
+@main.route("/tablero_inscritos", methods=['GET'])
+def tablero_inscritos() -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_TableroInscritos', [idComedor])
+        comedor_seleccionado = request.args.get('comedor')
+        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+        id_comedor = cur.fetchone()[0]
+
+        cur.callproc('PROC_TableroInscritos', [id_comedor])
         inscritos = cur.fetchall()
         cur.close()
 
@@ -138,26 +150,34 @@ def recaudaciones() -> None:
 
 
 # TODO: Implementation
-@main.route("/recaudaciones/donaciones/<idComedor>", methods=['GET'])
-def recaudaciones_donaciones(idComedor: int) -> Response | str:
+@main.route("/recaudaciones_donaciones", methods=['GET'])
+def recaudaciones_donaciones() -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_RecaudacionesDonaciones', idComedor)
+        comedor_seleccionado = request.args.get('comedor')
+        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+        id_comedor = cur.fetchone()[0]
+
+        cur.callproc('PROC_RecaudacionesDonaciones', id_comedor)
         recaudaciones_donaciones = cur.fetchone()
 
         return render_template('recaudacion.html', recaudaciones_donaciones=recaudaciones_donaciones)
 
 
 # TODO: Implementation
-@main.route("/recaudaciones/ventas/<idComedor>", methods=['GET'])
-def recaudaciones_ventas(idComedor: int) -> Response | str:
+@main.route("/recaudaciones_ventas", methods=['GET'])
+def recaudaciones_ventas() -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
 
-        cur.callproc('PROC_RecaudacionesVentas', idComedor)
+        comedor_seleccionado = request.args.get('comedor')
+        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+        id_comedor = cur.fetchone()[0]
+
+        cur.callproc('PROC_RecaudacionesVentas', id_comedor)
         recaudaciones_ventas = cur.fetchone()
 
         return render_template('recaudacion.html', recaudaciones_ventas=recaudaciones_ventas)
@@ -170,11 +190,15 @@ def personal() -> None:
 
 
 # TODO: Implementation
-@main.route("/personal/lista_personal/<idComedor>", methods=['GET'])
+@main.route("/personal_lista", methods=['GET'])
 def personal_lista(idComedor: int) -> Response | str:
     if request.method == 'GET':
         conn = connection()
         cur = conn.cursor()
+
+        comedor_seleccionado = request.args.get('comedor')
+        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+        id_comedor = cur.fetchone()[0]
 
         cur.callproc('PROC_PersonalLista', idComedor)
         personal_lista = cur.fetchone()
@@ -186,19 +210,6 @@ def personal_lista(idComedor: int) -> Response | str:
 @main.route("/inventario", methods=['GET'])
 def inventario() -> None:
     return render_template('inventario.html')
-
-
-# TODO: Implementation
-@main.route("/inventario/<idComedor>", methods=['GET'])
-def inventario_lista(idComedor: int) -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        cur.callproc('PROC_InventarioLista', idComedor)
-        inventario_lista = cur.fetchone()
-
-        return render_template('inventario.html', inventario_lista=inventario_lista)
 
 
 # TODO: APIs de la App de Administrador
