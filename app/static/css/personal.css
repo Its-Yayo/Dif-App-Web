@@ -8,7 +8,7 @@ body {
 }
 
 body.side-nav-open{
-    margin-left: 250px; /* Ancho del sidenav */
+    margin-left: 160px; /* Ancho del sidenav */
     transition: margin-left 0.3s ease-in-out;
 }
 
