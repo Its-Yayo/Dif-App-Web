@@ -105,7 +105,7 @@
 
         <div class="item-4" id="total_comensales">
             <div class="encabezado" id="encabezado4">Total de voluntarios registrados</div>
-            <form action="/tablero/inscritos/{{ idComedor }}" method="get" class="sub-grid" id="sub-item4">
+            <form action="/tablero_inscritos" method="get" class="sub-grid" id="sub-item4">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
                     <option value="Comedor A">Comedor A</option>
@@ -127,16 +127,22 @@
                     <option value="Comedor Q">Comedor Q</option>
                     <option value="Comedor R">Comedor R</option>
                 </select>
-                <div class="content" id="content4">
-                    <!-- Aquí puedes iterar sobre tus empleados y listarlos -->
-                    {% for empleado in empleados %}
-                        <p>{{ empleado.nombre }}</p>
-                    {% endfor %}
-                </div>
             </form>
+            <div class="content" id="content4">
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                    </tr>
+                    {% for empleado in empleados %}
+                    <tr>
+                        <td>{{ empleado.nombre }}</td>
+                        <td>{{ empleado.edad }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
-    
-
     </div>
 </div>
 

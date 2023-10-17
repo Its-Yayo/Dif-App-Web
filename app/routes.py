@@ -111,6 +111,7 @@ def tablero_recaudacion():
     return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
+# TODO: Implementation
 @main.route("/tablero_afluencia_mes", methods=['GET'])
 def tablero_afluencia_mes() -> Response | str:
     if request.method == 'GET':
@@ -132,21 +133,26 @@ def tablero_afluencia_mes() -> Response | str:
 @main.route("/tablero_inscritos", methods=['GET'])
 def tablero_inscritos() -> Response | str:
     if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
+        try:
+            conn = connection()
+            cur = conn.cursor()
 
-        comedor_seleccionado = request.args.get('comedor')
-        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-        id_comedor = cur.fetchone()[0]
+            comedor_seleccionado = request.args.get('comedor')
+            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+            id_comedor = cur.fetchone()[0]
 
-        cur.callproc('PROC_TableroInscritos', [id_comedor])
-        inscritos = cur.fetchall()
-        cur.close()
+            cur.callproc('PROC_TableroInscritos', [id_comedor])
+            inscritos = cur.fetchall()
 
-        if inscritos:
-            return render_template('home.html', inscritos=inscritos)
-        else:
-            return render_template('home.html', error_message="No se encontraron empleados registrados para este comedor.")
+            return render_template('home.html', empleados=inscritos)
+        except Exception as e:
+            flash('Error al obtener los inscritos', 'error')
+            print(e)
+            return jsonify({'error': 'Error al obtener los inscritos'})
+
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
+
+
 
 
 # TODO: Implementation
