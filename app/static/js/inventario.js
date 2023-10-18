@@ -1,11 +1,11 @@
 /* /usr/env/node node */
 
 document.getElementById("comedor").addEventListener("change", function() {
-    const comedorId = this.value;
-    console.log(`Comedor seleccionado: ${comedorId}`);
+    const comedorName = this.value;
+    console.log(`Comedor seleccionado: ${comedorName}`);
 
-    // Realizar una solicitud AJAX para obtener la lista de productos
-    fetch(`/inventario_lista?comedor=${comedorId}`)
+    // Realizar una solicitud AJAX para obtener la lista de productos del inventario
+    fetch(`/inventario_lista?comedor=${comedorName}`)
         .then(response => response.json())
         .then(data => {
             if (data && !data.error) {
@@ -25,7 +25,7 @@ document.getElementById("comedor").addEventListener("change", function() {
                     cell4.textContent = producto.unidadMedida;
                 });
             } else {
-                console.log("Error al obtener la lista de productos.");
+                console.log("Error al obtener la lista de productos del inventario.");
             }
         })
         .catch(error => {

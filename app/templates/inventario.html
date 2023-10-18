@@ -36,17 +36,22 @@
                 </select>
             </form>
             <div class="content" id="lista-productos">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Cantidad</th>
-                            <th>Descripción</th>
-                            <th>Presentación</th>
-                            <th>Unidad de Medida</th>
-                        </tr>
-                    </thead>
+               <table>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                        <th>Presentación</th>
+                        <th>Unidad de Medida</th>
+                    </tr>
                     <tbody id="productos-body">
-                        <!-- Los datos de los productos se cargarán aquí -->
+                        {% for producto in productos %}
+                        <tr>
+                            <td>{{ producto.cantidad }}</td>
+                            <td>{{ producto.descripcion }}</td>
+                            <td>{{ producto.presentacion }}</td>
+                            <td>{{ producto.unidadMedida }}</td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

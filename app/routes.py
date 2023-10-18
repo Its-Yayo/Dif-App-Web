@@ -233,8 +233,8 @@ def inventario_lista() -> Response | str:
             conn = connection()
             cur = conn.cursor()
 
-            comedor_seleccionado = request.args.get('comedor')
-            cur.callproc('PROC_InventarioLista', [comedor_seleccionado])
+            comedor_name = request.args.get('comedor')
+            cur.callproc('PROC_InventarioLista', [comedor_name])
             productos = cur.fetchall()
 
             if productos:
@@ -247,7 +247,6 @@ def inventario_lista() -> Response | str:
             flash('Error al obtener la lista de productos', 'error')
             print(e)
             return jsonify({'error': 'Error al obtener la lista de productos'})
-
 
     return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
