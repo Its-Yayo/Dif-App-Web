@@ -1,19 +1,12 @@
-const printCharts = () => {
-    renderModelsChart()
-}
-
-const renderModelsChart = () => {
+const ctxDoughnut = document.getElementById('myDoughnutChart');
     
-    const data = {
-        labels: ['uno', 'dos', 'tres', 'cuatro'],
-        datasets: [{
-            data: [10, 20 , 30, 40],
-            borderColor: ['red', 'green', 'blue']
-        }]
-    }
-
-    new Chart('modelsChart', {type: 'doughnut', data})
-
-}
-
-printCharts()
+        new Chart(ctxDoughnut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+                datasets: [{
+                    data: [7, 12, 3, 9, 5],
+                    backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple']
+                }]
+            }
+        });

@@ -6,7 +6,6 @@
 
 {% block javascript %}
 <script src="../static/js/app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -101,17 +100,42 @@
                     <option value="Comedor R">Comedor R</option>
                 </select>
             </form>
-            <div class="content" id="content2">
-                <canvas id="modelsChart"></canvas>
+            <div class="content" id="content3">
+                <canvas id="myDoughnutChart"></canvas>
             </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctxDoughnut = document.getElementById('myDoughnutChart').getContext('2d');
+    
+        new Chart(ctxDoughnut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Donaciones', 'Ventas'],
+                datasets: [{
+                    data: [200, 100], // Asegúrate de que las variables tengan los datos correctos
+                    backgroundColor: ['green', 'blue'], // Colores de las secciones del doughnut
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                aspectRatio: 1, // Puedes ajustar la relación de aspecto según tus necesidades
+            }
+        });
+    </script>
         </div>
     </div>
 
 </div>
+
+
+
 
 {% endblock %}
 
 {% block scripts %}
     <script src="../static/js/script_donaciones.js"></script>
     <script src="../static/js/script_ventas.js"></script>
+    
+    
 {% endblock %}
