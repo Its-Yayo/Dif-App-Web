@@ -140,8 +140,9 @@ nav a {
     margin-top: 25px;
     margin-left: 400px;
     margin-right: 400px;
-    height: 85%;
+    height: 75%;
     gap: 30px;
+    row-gap: 0;
     align-content: center;
 }
 
@@ -178,13 +179,40 @@ nav a {
 .encabezado{
     grid-row: 1;
     grid-column: auto ;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.encabezado span{
+    color: #899bbd;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .content{
-    background-color: antiquewhite;
     grid-row: 2;
     grid-column: 1 / span 3;
+    box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.2);
+    margin: 20px;
 }
 
+#content3{
+    margin: 0;
+}
+
+#content1, #content2, #content3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.value{
+    font-size: 30px;
+}
+
+.item-1, .item-2{
+    height: 70%;
+}
 
 

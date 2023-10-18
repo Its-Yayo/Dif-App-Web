@@ -16,7 +16,10 @@
     <div class="Dashb_container">
 
         <div class="item-1" id="donaciones">
-            <div class="encabezado" id="encabezado1">Donaciones</div>
+            <div class="encabezado" id="encabezado1">
+                Donaciones
+                <span>| Total</span>
+            </div>
             <form action="/recaudaciones_donaciones" method="get" class="sub-grid" id="sub-item1">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
@@ -41,12 +44,15 @@
                 </select>
             </form>
             <div class="content" id="content1">
-                <span id="donaciones-value">{{ recaudaciones_donaciones }}</span>
+                <span class="value" id="donaciones-value">{{ recaudaciones_donaciones }}</span>
             </div>
         </div>
 
         <div class="item-2" id="ventas">
-            <div class="encabezado" id="encabezado2">Ventas</div>
+            <div class="encabezado" id="encabezado2">
+                Ventas
+                <span>| Total</span>
+            </div>
             <form action="/recaudaciones_ventas" method="get" class="sub-grid" id="sub-item2">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
@@ -71,7 +77,7 @@
                 </select>
             </form>
             <div class="content" id="content2">
-                <span id="ventas-value">{{ recaudaciones_ventas }}</span>
+                <span class="value" id="ventas-value">{{ recaudaciones_ventas }}</span>
             </div>
         </div>
 

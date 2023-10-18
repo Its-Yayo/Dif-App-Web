@@ -10,21 +10,27 @@
 
 {% block body %}
 
-    <!-- Contenido de las secciones -->
-    <div class="container"> <!-- Contenedor principal con CSS Grid -->
-        <div class="chart-container">
-            <canvas id="myChart"></canvas>
-        </div>
-        <div class="chart-container">
-            <canvas id="myDoughnutChart"></canvas> <!-- Agregamos un nuevo canvas para el gráfico de doughnut -->
-        </div>
+<div class="container"> <!-- Contenedor principal con CSS Grid -->
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
     </div>
-    
+    <div class="chart-container">
+        <canvas id="myDoughnutChart"></canvas> <!-- Agregamos un nuevo canvas para el gráfico de doughnut -->
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/script_donaciones.js"></script>
+    <script src="../static/js/script_ventas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <script>
         const ctx = document.getElementById('myChart');
-    
+
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -43,10 +49,10 @@
                 }
             }
         });
-    
+
         // Crear un gráfico de tipo 'doughnut' con datos aleatorios
         const ctxDoughnut = document.getElementById('myDoughnutChart');
-    
+
         new Chart(ctxDoughnut, {
             type: 'doughnut',
             data: {
@@ -58,13 +64,4 @@
             }
         });
     </script>
-
-{% endblock %}
-
-{% block scripts %}
-    <script src="../static/js/script_donaciones.js"></script>
-    <script src="../static/js/script_ventas.js"></script>
-    
-    
-    <script src="../static/js/app.js"></script>
 {% endblock %}

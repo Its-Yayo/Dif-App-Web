@@ -12,6 +12,7 @@
         <div class="item-1" id="empleados">
             <div class="encabezado" id="encabezado1">
                 Administradores
+                <span>| Por comedor</span>
             </div>
             <form action="/personal_lista" method="get" class="sub-grid" id="sub-item2">
                 <label for="comedor">Comedor:</label>
@@ -38,14 +39,20 @@
             </form>
             <div class="content" id="lista-administradores">
                 <table>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>CURP</th>
-                    </tr>
-                    <tr>
-                        <td id="admin-nombre">{% if personal_lista %}{{ personal_lista.nombre }}{% endif %}</td>
-                        <td id="admin-curp">{% if personal_lista %}{{ personal_lista.curp }}{% endif %}</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>CURP</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td id="admin-nombre">{% if personal_lista %}{{ personal_lista.nombre }}{% endif %}</td>
+                            <td id="admin-curp">{% if personal_lista %}{{ personal_lista.curp }}{% endif %}</td>
+                        </tr>
+                    </tbody>
+                        
                 </table>
             </div>
         </div>
