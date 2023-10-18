@@ -111,25 +111,6 @@ def tablero_recaudacion():
     return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
-# TODO: Implementation
-@main.route("/tablero_afluencia_mes", methods=['GET'])
-def tablero_afluencia_mes() -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        comedor_seleccionado = request.args.get('comedor')
-        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-        id_comedor = cur.fetchone()[0]
-
-        cur.callproc('PROC_TableroAfluenciaMes', [id_comedor])
-        afluencia_mes = cur.fetchone()
-
-        if afluencia_mes:
-            return render_template('home.html', afluencia_mes=afluencia_mes)
-        else:
-            return render_template('home.html', error_message="No se encontraron registros de afluencia mensual para este comedor.")
-
 @main.route("/tablero_inscritos", methods=['GET'])
 def tablero_inscritos() -> Response | str:
     if request.method == 'GET':
@@ -216,19 +197,27 @@ def personal() -> None:
 
 # TODO: Implementation
 @main.route("/personal_lista", methods=['GET'])
-def personal_lista(idComedor: int) -> Response | str:
+def personal_lista() -> Response | str:
     if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
+        try:
+            conn = connection()
+            cur = conn.cursor()
 
-        comedor_seleccionado = request.args.get('comedor')
-        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-        id_comedor = cur.fetchone()[0]
+            comedor_seleccionado = request.args.get('comedor')
+            cur.callproc('PROC_PersonalLista', [comedor_seleccionado])
+            admin = cur.fetchall()
 
-        cur.callproc('PROC_PersonalLista', idComedor)
-        personal = cur.fetchall()
+            if admin:
+                personal_lista = {'nombre': admin[0][0], 'curp': admin[0][1]}
+                return jsonify(personal_lista)
+            else:
+                return jsonify({'error': 'No se encontró administrador para el comedor seleccionado'})
+        except Exception as e:
+            flash('Error al obtener el administrador', 'error')
+            print(e)
+            return jsonify({'error': 'Error al obtener el administrador'})
 
-        return render_template('personal.html', personal_lista=personal)
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
 # TODO: Implementation
@@ -239,7 +228,28 @@ def inventario() -> None:
 
 @main.route("/inventario_lista", methods=['GET'])
 def inventario_lista() -> Response | str:
-    ...
+    if request.method == 'GET':
+        try:
+            conn = connection()
+            cur = conn.cursor()
+
+            comedor_seleccionado = request.args.get('comedor')
+            cur.callproc('PROC_InventarioLista', [comedor_seleccionado])
+            productos = cur.fetchall()
+
+            if productos:
+                lista_productos = [{'cantidad': producto[0], 'descripcion': producto[1], 'presentacion': producto[2],
+                                    'unidadMedida': producto[3]} for producto in productos]
+                return jsonify({'productos': lista_productos})
+            else:
+                return jsonify({'error': 'No se encontraron productos para el comedor seleccionado'})
+        except Exception as e:
+            flash('Error al obtener la lista de productos', 'error')
+            print(e)
+            return jsonify({'error': 'Error al obtener la lista de productos'})
+
+
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
 # TODO: APIs de la App de Administrador

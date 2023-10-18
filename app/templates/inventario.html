@@ -35,12 +35,28 @@
                     <option value="Comedor R">Comedor R</option>
                 </select>
             </form>
-            <div class="content" id="content-inventario">
-
+            <div class="content" id="lista-productos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cantidad</th>
+                            <th>Descripción</th>
+                            <th>Presentación</th>
+                            <th>Unidad de Medida</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productos-body">
+                        <!-- Los datos de los productos se cargarán aquí -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/inventario.js"></script>
 {% endblock %}
