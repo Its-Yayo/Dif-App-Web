@@ -236,14 +236,16 @@ def inventario_lista() -> Response | str:
             comedor_seleccionado = request.args.get('comedor')
 
             print(f"Comedor seleccionado: {comedor_seleccionado}")
+
+            # Obtener el ID del comedor a partir del nombre
             cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
             id_comedor = cur.fetchone()[0]
 
-            cur.callproc('PROC_InventarioLista', [id_comedor])
+            cur.callproc('PROC_InventarioLista', [comedor_seleccionado])
             productos = cur.fetchall()
 
             if productos:
-                lista_productos = [{'cantidad': producto[0], 'descripcion': producto[1], 'presentacion': producto[2],
+                lista_productos = [{'cantidad': producto[0], 'descripcion': producto[1], 'presentación': producto[2],
                                     'unidadMedida': producto[3]} for producto in productos]
                 return jsonify({'productos': lista_productos})
             else:

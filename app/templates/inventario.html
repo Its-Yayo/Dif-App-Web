@@ -9,10 +9,9 @@
 <div class="dashboard">
 
     <div class="inventario_container">
-
         <div class="item-inventario" id="inventario">
             <div class="encabezado" id="encabezado-inventario">Inventario</div>
-            <form action="" method="get" class="sub-grid" id="sub-item-inventario">
+            <form action="/inventario_lista" method="get" class="sub-grid" id="sub-item-inventario">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
                     <option value="Comedor A">Comedor A</option>
@@ -36,7 +35,7 @@
                 </select>
             </form>
             <div class="content" id="lista-productos">
-               <table>
+                <table>
                     <tr>
                         <th>Cantidad</th>
                         <th>Descripción</th>
@@ -44,14 +43,7 @@
                         <th>Unidad de Medida</th>
                     </tr>
                     <tbody id="productos-body">
-                        {% for producto in productos %}
-                        <tr>
-                            <td>{{ producto.cantidad }}</td>
-                            <td>{{ producto.descripcion }}</td>
-                            <td>{{ producto.presentacion }}</td>
-                            <td>{{ producto.unidadMedida }}</td>
-                        </tr>
-                        {% endfor %}
+                        <!-- Los datos de los productos se cargarán aquí -->
                     </tbody>
                 </table>
             </div>

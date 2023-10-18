@@ -26,6 +26,7 @@ document.getElementById("comedor").addEventListener("change", function() {
                 });
             } else {
                 console.log("Error al obtener la lista de productos del inventario.");
+                console.log(data.error);
             }
         })
         .catch(error => {
