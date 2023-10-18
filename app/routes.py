@@ -376,6 +376,51 @@ def pruebas() -> Response | str:
     return render_template('pruebas.html')
 
 
+@main.route("/img_cerrar_sesion", methods=['GET'])
+def img_cerrar_sesion() -> Response | str:
+    return render_template('../images/cerrar-sesion.png')
+
+@main.route("/img_logo_atzp", methods=['GET'])
+def img_logo_atzp() -> str:
+    return render_template('../images/logo_atzp.png')
+
+@main.route("/img_multitud", methods=['GET'])
+def img_multitud() -> str:
+    return render_template('../images/multitud.png')
+
+
+@main.route("/img_personal", methods=['GET'])
+def img_personal() -> str:
+    return render_template('../images/personal.png')
+
+
+@main.route("/img_rentable", methods=['GET'])
+def img_rentable() -> Response | str:
+    return render_template('../images/rentable.png')
+
+
+@main.route("/img_comedor", methods=['GET'])
+def img_comedor() -> Response | str:
+    return render_template('../images/comedor.png')
+
+
+@main.route("/img_tablero", methods=['GET'])
+def img_tablero() -> str:
+    return render_template('../images/tablero.png')
+
+
+@main.route("/img_inventario", methods=['GET'])
+def img_inventario() -> str:
+    return render_template('../images/inventario.png')
+
+
+@main.route("/img_estadisticas", methods=['GET'])
+def img_cerrar_sesion() -> Response | str:
+    return render_template('../images/estadisticas.png')
+
+
+
+
 
 # --------------------------------------------
 
