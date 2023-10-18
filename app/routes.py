@@ -210,7 +210,7 @@ def recaudaciones_ventas() -> Response | str:
                 ventas_totales = result[0]
                 return render_template('recaudacion.html', ventas_totales=ventas_totales)
             else:
-                return render_template('recaudacion.html', donaciones_totales=0)
+                return render_template('recaudacion.html', ventas_totales=0)
         except Exception as e:
             flash('Error al obtener las recaudaciones', 'error')
             print(e)
