@@ -245,7 +245,7 @@ def inventario_lista() -> Response | str:
             productos = cur.fetchall()
 
             if productos:
-                lista_productos = [{'cantidad': producto[0], 'descripcion': producto[1], 'presentación': producto[2],
+                lista_productos = [{'cantidad': producto[0], 'descripcion': producto[1], 'presentacion': producto[2],
                                     'unidadMedida': producto[3]} for producto in productos]
                 return jsonify({'productos': lista_productos})
             else:
