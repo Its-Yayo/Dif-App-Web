@@ -369,6 +369,11 @@ def mostrar_donativos(idComedor: int):
         return jsonify(response), 500
 
 
+@main.route("/pruebas", methods=['GET'])
+def pruebas() -> Response | str:
+    return render_template('pruebas.html')
+
+
 
 # --------------------------------------------
 
