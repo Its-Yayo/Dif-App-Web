@@ -199,6 +199,8 @@ nav a {
 
 #content3{
     margin: 0;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 #content1, #content2, #content3{
@@ -215,4 +217,6 @@ nav a {
     height: 70%;
 }
 
-
+#dona{
+    height: 450px;
+}

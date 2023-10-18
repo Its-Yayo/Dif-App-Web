@@ -371,7 +371,7 @@ def mostrar_donativos(idComedor: int):
         return jsonify(response), 500
 
 
-@main.route("/pruebas", methods=['GET'])
+'''@main.route("/pruebas", methods=['GET'])
 def pruebas() -> Response | str:
     return render_template('pruebas.html')
 
@@ -416,7 +416,7 @@ def img_inventario() -> str:
 
 @main.route("/img_estadisticas", methods=['GET'])
 def img_cerrar_sesion() -> Response | str:
-    return render_template('../images/estadisticas.png')
+    return render_template('../images/estadisticas.png')'''
 
 
 
