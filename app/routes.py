@@ -228,7 +228,28 @@ def inventario() -> None:
 
 @main.route("/inventario_lista", methods=['GET'])
 def inventario_lista() -> Response | str:
-    ...
+    if request.method == 'GET':
+        try:
+            conn = connection()
+            cur = conn.cursor()
+
+            comedor_seleccionado = request.args.get('comedor')
+            cur.callproc('PROC_InventarioLista', [comedor_seleccionado])
+            productos = cur.fetchall()
+
+            if productos:
+                lista_productos = [{'cantidad': producto[0], 'descripcion': producto[1], 'presentacion': producto[2],
+                                    'unidadMedida': producto[3]} for producto in productos]
+                return jsonify({'productos': lista_productos})
+            else:
+                return jsonify({'error': 'No se encontraron productos para el comedor seleccionado'})
+        except Exception as e:
+            flash('Error al obtener la lista de productos', 'error')
+            print(e)
+            return jsonify({'error': 'Error al obtener la lista de productos'})
+
+
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
 # TODO: APIs de la App de Administrador
