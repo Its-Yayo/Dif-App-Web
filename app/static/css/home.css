@@ -4,8 +4,8 @@ body {
     font-family: Arial, sans-serif;
     margin-top: 150px;
     transition: margin-left 0.3s ease-in-out;
-    background: #eef1f7;
     background: #f4f4f4;
+    
 }
 
 body.side-nav-open{
