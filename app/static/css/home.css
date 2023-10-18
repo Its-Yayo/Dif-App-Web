@@ -268,3 +268,23 @@ th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
+
+/* Estilo para el pie de página */
+footer {
+    background-color: #333; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Alineación de texto al centro */
+}
+
+/* Estilo para los enlaces en el pie de página */
+footer a {
+    color: #ff9900; /* Color de los enlaces */
+    text-decoration: none; /* Elimina la subraya predeterminada de los enlaces */
+    margin: 0 10px; /* Márgenes horizontales entre los enlaces */
+}
+
+/* Estilo para los enlaces en el pie de página al pasar el ratón */
+footer a:hover {
+    text-decoration: underline; /* Agrega subraya al pasar el ratón */
+}
