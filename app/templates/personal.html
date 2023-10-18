@@ -9,13 +9,11 @@
 <div class="dashb_personal">
 <!--Se necesita organizar por comedor-->
     <div class="container">
-
         <div class="item-1" id="empleados">
             <div class="encabezado" id="encabezado1">
-                Empleados
+                Administradores
             </div>
-
-            <form action="" method="get" class="sub-grid" id="sub-item2">
+            <form action="/personal_lista" method="get" class="sub-grid" id="sub-item2">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
                     <option value="Comedor A">Comedor A</option>
@@ -38,13 +36,17 @@
                     <option value="Comedor R">Comedor R</option>
                 </select>
             </form>
-            <div class="content">
-                Datos
+           <div class="content" id="lista-administradores">
+               <p>Nombre: {{ personal_lista.nombre }}</p>
+               <p>CURP: {{ personal_lista.curp }}</p>
             </div>
         </div>
-
 
     </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/personal.js"></script>
 {% endblock %}

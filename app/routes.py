@@ -111,25 +111,6 @@ def tablero_recaudacion():
     return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
-# TODO: Implementation
-@main.route("/tablero_afluencia_mes", methods=['GET'])
-def tablero_afluencia_mes() -> Response | str:
-    if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
-
-        comedor_seleccionado = request.args.get('comedor')
-        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-        id_comedor = cur.fetchone()[0]
-
-        cur.callproc('PROC_TableroAfluenciaMes', [id_comedor])
-        afluencia_mes = cur.fetchone()
-
-        if afluencia_mes:
-            return render_template('home.html', afluencia_mes=afluencia_mes)
-        else:
-            return render_template('home.html', error_message="No se encontraron registros de afluencia mensual para este comedor.")
-
 @main.route("/tablero_inscritos", methods=['GET'])
 def tablero_inscritos() -> Response | str:
     if request.method == 'GET':
@@ -216,19 +197,37 @@ def personal() -> None:
 
 # TODO: Implementation
 @main.route("/personal_lista", methods=['GET'])
-def personal_lista(idComedor: int) -> Response | str:
+def personal_lista() -> Response | str:
     if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
+        try:
+            conn = connection()
+            cur = conn.cursor()
 
-        comedor_seleccionado = request.args.get('comedor')
-        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-        id_comedor = cur.fetchone()[0]
+            comedor_seleccionado = request.args.get('comedor')
+            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+            id_comedor = cur.fetchone()[0]
 
-        cur.callproc('PROC_PersonalLista', idComedor)
-        personal = cur.fetchall()
+            cur.callproc('PROC_PersonalLista', id_comedor)
+            personal = cur.fetchall()
 
-        return render_template('personal.html', personal_lista=personal)
+            if personal:
+                nombre, curp = personal[0]
+                personal_info = {'nombre': nombre, 'curp': curp}
+
+                # Debug
+                print(f"Comedor seleccionado: {comedor_seleccionado}")
+                print(f"ID de comedor: {id_comedor}")
+                print(f"Personal: {personal_info}")
+
+                return jsonify({'personal_lista': personal_info})
+            else:
+                return jsonify({'error': 'No se encontró un administrador para el comedor seleccionado'})
+        except Exception as e:
+            flash('Error al obtener el personal', 'error')
+            print(e)
+            return jsonify({'error': 'Error al obtener el personal'})
+
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 
 # TODO: Implementation
