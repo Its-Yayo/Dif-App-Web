@@ -233,8 +233,13 @@ def inventario_lista() -> Response | str:
             conn = connection()
             cur = conn.cursor()
 
-            comedor_name = request.args.get('comedor')
-            cur.callproc('PROC_InventarioLista', [comedor_name])
+            comedor_seleccionado = request.args.get('comedor')
+
+            print(f"Comedor seleccionado: {comedor_seleccionado}")
+            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+            id_comedor = cur.fetchone()[0]
+
+            cur.callproc('PROC_InventarioLista', [id_comedor])
             productos = cur.fetchall()
 
             if productos:
