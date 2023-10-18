@@ -123,7 +123,7 @@ def tablero_afluencia_mes() -> Response | str:
         id_comedor = cur.fetchone()[0]
 
         cur.callproc('PROC_TableroAfluenciaMes', [id_comedor])
-        afluencia_mes = cur.fetchall()
+        afluencia_mes = cur.fetchone()
 
         if afluencia_mes:
             return render_template('home.html', afluencia_mes=afluencia_mes)
@@ -165,35 +165,58 @@ def recaudaciones() -> None:
 @main.route("/recaudaciones_donaciones", methods=['GET'])
 def recaudaciones_donaciones() -> Response | str:
     if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
+        try:
+            conn = connection()
+            cur = conn.cursor()
 
-        comedor_seleccionado = request.args.get('comedor')
-        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-        id_comedor = cur.fetchone()[0]
+            comedor_seleccionado = request.args.get('comedor')
+            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+            id_comedor = cur.fetchone()[0]
 
-        cur.callproc('PROC_RecaudacionesDonaciones', id_comedor)
-        recaudaciones_donaciones = cur.fetchone()
+            cur.callproc('PROC_RecaudacionesDonaciones', [id_comedor])
+            result = cur.fetchone()
 
-        return render_template('recaudacion.html', recaudaciones_donaciones=recaudaciones_donaciones)
+            if result:
+                donaciones_totales = result[0]
+                return render_template('recaudacion.html', donaciones_totales=donaciones_totales)
+            else:
+                return render_template('recaudacion.html', donaciones_totales=0)
+        except Exception as e:
+            flash('Error al obtener las recaudaciones', 'error')
+            print(e)
+            return jsonify({'error': 'Error al obtener las recaudaciones'})
+
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
+
 
 
 # TODO: Implementation
 @main.route("/recaudaciones_ventas", methods=['GET'])
 def recaudaciones_ventas() -> Response | str:
     if request.method == 'GET':
-        conn = connection()
-        cur = conn.cursor()
+        try:
+            conn = connection()
+            cur = conn.cursor()
 
-        comedor_seleccionado = request.args.get('comedor')
-        cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-        id_comedor = cur.fetchone()[0]
+            comedor_seleccionado = request.args.get('comedor')
+            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
+            id_comedor = cur.fetchone()[0]
 
-        cur.callproc('PROC_RecaudacionesVentas', id_comedor)
-        recaudaciones_ventas = cur.fetchone()
+            cur.callproc('PROC_RecaudacionesVentas', id_comedor)
+            result = cur.fetchone()
 
-        return render_template('recaudacion.html', recaudaciones_ventas=recaudaciones_ventas)
 
+            if result:
+                ventas_totales = result[0]
+                return render_template('recaudacion.html', ventas_totales=ventas_totales)
+            else:
+                return render_template('recaudacion.html', donaciones_totales=0)
+        except Exception as e:
+            flash('Error al obtener las recaudaciones', 'error')
+            print(e)
+            return jsonify({'error': 'Error al obtener las recaudaciones'})
+
+    return jsonify({'error': 'Método GET no permitido en esta ruta'})
 
 # TODO: Implementation
 @main.route("/personal", methods=['GET'])

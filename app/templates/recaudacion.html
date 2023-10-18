@@ -37,13 +37,13 @@
                 </select>
             </form>
             <div class="content" id="content1">
-                <span id="ventas-value">{{ ventas_totales }}</span>
+                <span id="ventas-value">{{ ventas_totales[0] if ventas_totales else 0 }}</span>
             </div>
         </div>
 
         <div class="item-2" id="ventas">
             <div class="encabezado" id="encabezado2">Ventas</div>
-            <form action="" method="get" class="sub-grid" id="sub-item2">
+            <form action="/recaudaciones_donaciones" method="get" class="sub-grid" id="sub-item2">
                 <label for="comedor">Comedor:</label>
                 <select id="comedor" name="comedor">
                     <option value="Comedor A">Comedor A</option>
@@ -67,7 +67,7 @@
                 </select>
             </form>
             <div class="content" id="content2">
-                <span id="donaciones-value">{{ donaciones_totales }}</span>
+                <span id="donaciones-value">{{ donaciones_totales[0] if donaciones_totales else 0 }}</span>
             </div>
         </div>
 
