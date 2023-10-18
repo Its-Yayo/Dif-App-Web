@@ -23,7 +23,7 @@ document.getElementById("comedor").addEventListener("change", function() {
                 listaAdminDiv.appendChild(table);
             } else {
                 console.log("Error al obtener el administrador.");
-                 console.log(data.error);
+                console.log(data.error);
             }
         })
         .catch(error => {
