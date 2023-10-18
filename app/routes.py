@@ -202,7 +202,7 @@ def recaudaciones_ventas() -> Response | str:
             cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
             id_comedor = cur.fetchone()[0]
 
-            cur.callproc('PROC_RecaudacionesVentas', id_comedor)
+            cur.callproc('PROC_RecaudacionesVentas', [id_comedor])
             result = cur.fetchone()
 
 
