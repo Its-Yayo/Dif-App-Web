@@ -36,9 +36,17 @@
                     <option value="Comedor R">Comedor R</option>
                 </select>
             </form>
-           <div class="content" id="lista-administradores">
-               <p>Nombre: {{ personal_lista.nombre }}</p>
-               <p>CURP: {{ personal_lista.curp }}</p>
+            <div class="content" id="lista-administradores">
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>CURP</th>
+                    </tr>
+                    <tr>
+                        <td id="admin-nombre">{% if personal_lista %}{{ personal_lista.nombre }}{% endif %}</td>
+                        <td id="admin-curp">{% if personal_lista %}{{ personal_lista.curp }}{% endif %}</td>
+                    </tr>
+                </table>
             </div>
         </div>
 

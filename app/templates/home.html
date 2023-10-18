@@ -129,21 +129,8 @@
                 </select>
             </form>
             <div class="content" id="content4">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Edad</th>
-                        </tr>
-                    <tbody>
-                        {% for empleado in empleados %}
-                            <tr>
-                                <th>{{ empleado.nombre }}</th>
-                                <th>{{ empleado.edad }}</th>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <!-- Aquí puedes mostrar los datos de afluencia mensual -->
+                <span id="total-value">{{ total_comensales }}</span>
             </div>
         </div>
     </div>

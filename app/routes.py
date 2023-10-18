@@ -204,28 +204,18 @@ def personal_lista() -> Response | str:
             cur = conn.cursor()
 
             comedor_seleccionado = request.args.get('comedor')
-            cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
-            id_comedor = cur.fetchone()[0]
+            cur.callproc('PROC_PersonalLista', [comedor_seleccionado])
+            admin = cur.fetchall()
 
-            cur.callproc('PROC_PersonalLista', id_comedor)
-            personal = cur.fetchall()
-
-            if personal:
-                nombre, curp = personal[0]
-                personal_info = {'nombre': nombre, 'curp': curp}
-
-                # Debug
-                print(f"Comedor seleccionado: {comedor_seleccionado}")
-                print(f"ID de comedor: {id_comedor}")
-                print(f"Personal: {personal_info}")
-
-                return jsonify({'personal_lista': personal_info})
+            if admin:
+                personal_lista = {'nombre': admin[0][0], 'curp': admin[0][1]}
+                return jsonify(personal_lista)
             else:
-                return jsonify({'error': 'No se encontró un administrador para el comedor seleccionado'})
+                return jsonify({'error': 'No se encontró administrador para el comedor seleccionado'})
         except Exception as e:
-            flash('Error al obtener el personal', 'error')
+            flash('Error al obtener el administrador', 'error')
             print(e)
-            return jsonify({'error': 'Error al obtener el personal'})
+            return jsonify({'error': 'Error al obtener el administrador'})
 
     return jsonify({'error': 'Método GET no permitido en esta ruta'})
 

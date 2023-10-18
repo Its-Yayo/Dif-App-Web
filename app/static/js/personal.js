@@ -4,25 +4,25 @@ document.getElementById("comedor").addEventListener("change", function() {
     const comedorId = this.value;
     console.log(`Comedor seleccionado: ${comedorId}`);
 
-    // Realizar una solicitud AJAX para obtener los datos del administrador
+    // Realizar una solicitud AJAX para obtener el administrador
     fetch(`/personal_lista?comedor=${comedorId}`)
         .then(response => response.json())
         .then(data => {
-            if (data && data.personal_lista) {
+            if (data && !data.error) {
                 const listaAdminDiv = document.getElementById("lista-administradores");
-                // Limpia el contenido anterior
-                listaAdminDiv.innerHTML = "";
+                listaAdminDiv.innerHTML = ""; // Limpia el contenido anterior
 
-                // Muestra el nombre y el CURP del administrador
-                const nombreElement = document.createElement("p");
-                nombreElement.textContent = `Nombre: ${data.personal_lista.nombre}`;
-                const curpElement = document.createElement("p");
-                curpElement.textContent = `CURP: ${data.personal_lista.curp}`;
+                const table = document.createElement("table");
+                const row = table.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
 
-                listaAdminDiv.appendChild(nombreElement);
-                listaAdminDiv.appendChild(curpElement);
+                cell1.textContent = data.nombre;
+                cell2.textContent = data.curp;
+
+                listaAdminDiv.appendChild(table);
             } else {
-                console.log("Los datos recibidos no contienen personal_lista o son undefined.");
+                console.log("Error al obtener el administrador.");
             }
         })
         .catch(error => {
