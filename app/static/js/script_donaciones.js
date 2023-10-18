@@ -8,7 +8,7 @@ function actualizarDonacionesTotales() {
         .then(response => response.json())
         .then(data => {
             const donacionesSpan = document.getElementById("donaciones-value");
-            donacionesSpan.textContent = data.donaciones_totales;
+            donacionesSpan.textContent = data.recaudaciones_donaciones;
         })
         .catch(error => {
             console.error(error);

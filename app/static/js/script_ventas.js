@@ -8,7 +8,7 @@ function actualizarVentasTotales() {
         .then(response => response.json())
         .then(data => {
             const ventasSpan = document.getElementById("ventas-value");
-            ventasSpan.textContent = data.ventas_totales;
+            ventasSpan.textContent = data.recaudaciones_ventas;
         })
         .catch(error => {
             console.error(error);

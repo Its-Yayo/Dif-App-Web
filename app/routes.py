@@ -176,18 +176,13 @@ def recaudaciones_donaciones() -> Response | str:
             cur.callproc('PROC_RecaudacionesDonaciones', [id_comedor])
             result = cur.fetchone()
 
-            if result:
-                donaciones_totales = result[0]
-                return render_template('recaudacion.html', donaciones_totales=donaciones_totales)
-            else:
-                return render_template('recaudacion.html', donaciones_totales=0)
+            return jsonify({'recaudaciones_donaciones': result[0]})
         except Exception as e:
             flash('Error al obtener las recaudaciones', 'error')
             print(e)
             return jsonify({'error': 'Error al obtener las recaudaciones'})
 
     return jsonify({'error': 'Método GET no permitido en esta ruta'})
-
 
 
 # TODO: Implementation
@@ -205,12 +200,7 @@ def recaudaciones_ventas() -> Response | str:
             cur.callproc('PROC_RecaudacionesVentas', [id_comedor])
             result = cur.fetchone()
 
-
-            if result:
-                ventas_totales = result[0]
-                return render_template('recaudacion.html', ventas_totales=ventas_totales)
-            else:
-                return render_template('recaudacion.html', ventas_totales=0)
+            return jsonify({'recaudaciones_ventas': result[0]})
         except Exception as e:
             flash('Error al obtener las recaudaciones', 'error')
             print(e)
