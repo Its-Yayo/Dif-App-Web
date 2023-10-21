@@ -371,10 +371,10 @@ def mostrar_donativos(idComedor: int):
         return jsonify(response), 500
 
 
-'''@main.route("/pruebas", methods=['GET'])
+@main.route("/pruebas", methods=['GET'])
 def pruebas() -> Response | str:
     return render_template('pruebas.html')
-
+'''
 
 @main.route("/img_cerrar_sesion", methods=['GET'])
 def img_cerrar_sesion() -> Response | str:
