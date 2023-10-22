@@ -1,19 +1,20 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 150px;
     transition: margin-left 0.3s ease-in-out;
-    background-color: #f4f4f4;
+    background: #f4f4f4;
+    
 }
 
 body.side-nav-open{
-    margin-left: 160px; /* Ancho del sidenav */
+    margin-left: 118px; /* Ancho del sidenav */
     transition: margin-left 0.3s ease-in-out;
 }
 
 header {
-    background-color: #333;
+    background-color: #8f4a8b;
     color: white;
     padding: 0px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
@@ -45,7 +46,7 @@ header {
 #sideNav {
     width: 250px;
     height: 100%;
-    background-color: #333;
+    background-color: #8f4a8b;
     position:fixed;
     left: -250px;
     top: 0;
@@ -53,11 +54,21 @@ header {
     margin-top: 80px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
     font-size: 20px;
-    z-index: 20px;
 }
 
 #sideNav.open {
     left: 0;
+}
+
+.sidenav_links{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sidenav_icons{
+    margin: 15px;
+    margin-left: 0;
 }
 
 ul {
@@ -79,7 +90,7 @@ a {
 }
 
 a:hover {
-    background-color: #555;
+    background-color: #966293;
 }
 
 a.logo_Atzp{
@@ -87,7 +98,7 @@ a.logo_Atzp{
 }
 
 a.logo_Atzp, .profile_nav:hover{
-    background-color: #333;
+    background-color: #8f4a8b;
 }
 
 .profile_nav{
@@ -97,7 +108,7 @@ a.logo_Atzp, .profile_nav:hover{
     justify-content: space-between;
 }
 
-.user_name, .filter_btn{
+.user_name{
     margin: 20px;
     font-size: 20px;
 }
@@ -186,12 +197,8 @@ nav a {
 .content{
     grid-row: 2;
     grid-column: 1 / span 3;
-    margin: 105px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.2);
+    margin: 15px;
 }
 
 table {

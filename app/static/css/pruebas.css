@@ -1,57 +1,329 @@
-/* Estilos generales de la página */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 150px;
+    transition: margin-left 0.3s ease-in-out;
+    background: #f4f4f4;
+    
+}
+
+body.side-nav-open{
+    margin-left: 118px; /* Ancho del sidenav */
+    transition: margin-left 0.3s ease-in-out;
+}
+
+header {
+    background-color: #8f4a8b;
+    color: white;
+    padding: 0px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    z-index: 2;
+    left: 0 ;
+
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+#toggleNav {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#sideNav {
+    width: 250px;
+    height: 100%;
+    background-color: #8f4a8b;
+    position:fixed;
+    left: -250px;
+    top: 0;
+    transition: left 0.3s ease-in-out;
+    margin-top: 80px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
+
+#sideNav.open {
+    left: 0;
+}
+
+.sidenav_links{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #966293;
+}
+
+a.logo_Atzp{
+    padding: 2px;
+}
+
+a.logo_Atzp, .profile_nav:hover{
+    background-color: #8f4a8b;
+}
+
+.profile_nav{
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user_name{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.user_menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a {
+    text-decoration: none;
+    font-style: oblique;
+}
+
+.dashboard{
+    height: 130vh;
+}
+
+.Dashb_container, .recaudacion_container, .inventario_container,
+.informe_container{
+    margin-top: 25px;
+    margin-left: 350px;
+    margin-right: 350px;
+    height: 80%;
+    display: grid;
+    gap: 30px;
+    align-content: center;
+}
+
+.Dashb_container{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "header header header";
+    grid-auto-rows: minmax(150px, 1fr);
+}
+
+
+/* Para inventario e informe */
+
+.inventario_container{
+    height: 80%;
+    margin: 150px;
+    margin-left: 400px;
+    margin-right: 400px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+/* Inventario e informe (fin) */
+
+
+
+.item-1, .item-2, .item-3, .item-4, .item-inventario{
+    background-color: white;
+    border-radius: 9px;
+    padding: 15px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 9fr;
+    gap: 0;
+}
+
+.item-1{
+    grid-row: 1 /  2;
+    grid-column: auto;
+}
+
+.item-2{
+    grid-row: 1 / 2;
+    grid-column: auto;
+}
+
+.item-inventario{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#lista-productos{
+    margin: 0;
+}
+
+#sub-item1, #sub-item2, #sub-item3, #sub-item-4, #sub-item-inventario{
+    text-align: end;
+}
+
+.encabezado{
+    grid-row: 1;
+    grid-column: auto ;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.encabezado span{
+    color: #899bbd;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.content{
+    grid-row: 2;
+    grid-column: 2 / span 1;
+    box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.2);
+    margin: 15px;
+}
+
+.content-icon{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
-.login-container {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+#content3, #lista-productos{
+    grid-row: 2;
+    grid-column: 1 / span 3;
 }
 
-/* Estilos del formulario */
-form {
+.sidenav_icons{
+    margin: 15px;
+    margin-left: 0;
+}
+
+#content4{
+    margin: 0;
+}
+
+.item-3{
+    grid-row: 2 / 4;
+    grid-column: 1 / 3;
+}
+
+.item-4{
+    grid-row: 1 / 4;
+    grid-column: 3 / 5;
+}
+
+#comedores {
+    max-height: 100px; /* Establece una altura máxima */
+    overflow-y: scroll; /* Agrega una barra de desplazamiento vertical si es necesario */
+}
+
+
+/* Para variables de la base de datos */
+
+#content1, #content2, #content3, #content4{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-group {
-    margin-bottom: 15px;
+#afluencia-value, #recaudacion-value{
+    font-size: 30px;
 }
 
-label {
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="password"] {
-    width: 100%;
+/* Estilo para el pie de página */
+footer {
+    background-color: #333; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Alineación de texto al centro */
+}
+
+/* Estilo para los enlaces en el pie de página */
+footer a {
+    color: #ff9900; /* Color de los enlaces */
+    text-decoration: none; /* Elimina la subraya predeterminada de los enlaces */
+    margin: 0 10px; /* Márgenes horizontales entre los enlaces */
+}
+
+/* Estilo para los enlaces en el pie de página al pasar el ratón */
+footer a:hover {
+    text-decoration: underline; /* Agrega subraya al pasar el ratón */
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dividir en 2 columnas */
+    gap: 20px; /* Espacio entre los elementos */
+}
+
+/* Agregar estilos para cada gráfica */
+.chart-container {
+    border: 1px solid #ddd;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-height: 500px;
 }
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-

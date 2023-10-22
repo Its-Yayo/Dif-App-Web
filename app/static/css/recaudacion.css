@@ -1,19 +1,20 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 150px;
     transition: margin-left 0.3s ease-in-out;
-    background-color: #f4f4f4;
+    background: #f4f4f4;
+    
 }
 
 body.side-nav-open{
-    margin-left: 70px; /* Ancho del sidenav */
+    margin-left: 75px; /* Ancho del sidenav */
     transition: margin-left 0.3s ease-in-out;
 }
 
 header {
-    background-color: #333;
+    background-color: #8f4a8b;
     color: white;
     padding: 0px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
@@ -45,7 +46,7 @@ header {
 #sideNav {
     width: 250px;
     height: 100%;
-    background-color: #333;
+    background-color: #8f4a8b;
     position:fixed;
     left: -250px;
     top: 0;
@@ -53,6 +54,22 @@ header {
     margin-top: 80px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
     font-size: 20px;
+}
+
+#sideNav.open {
+    left: 0;
+}
+
+.sidenav_links{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+
+.sidenav_icons{
+    margin: 15px;
+    margin-left: 0;
 }
 
 #sideNav.open {
@@ -77,7 +94,7 @@ a {
 }
 
 a:hover {
-    background-color: #555;
+    background-color: #966293;
 }
 
 a.logo_Atzp{
@@ -85,7 +102,7 @@ a.logo_Atzp{
 }
 
 a.logo_Atzp, .profile_nav:hover{
-    background-color: #333;
+    background-color: #8f4a8b;
 }
 
 .profile_nav{
@@ -197,6 +214,12 @@ nav a {
     margin: 20px;
 }
 
+.content-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #content3{
     margin: 0;
     margin-left: 50px;
@@ -207,6 +230,11 @@ nav a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#content1, #content2{
+    grid-row: 2;
+    grid-column: 2 / span 1;
 }
 
 .value{

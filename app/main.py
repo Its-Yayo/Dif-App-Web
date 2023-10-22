@@ -8,7 +8,7 @@ import sys
 app.register_blueprint(main)
 
 if __name__ == '__main__':
-    app.run(host='172.31.28.152', port=3000)
+    app.run(debug=True)
     sys.exit(0)
 
     

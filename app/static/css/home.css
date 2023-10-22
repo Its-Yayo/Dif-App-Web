@@ -62,13 +62,14 @@ header {
 
 .sidenav_links{
     display: flex;
-    justify-content: space-between;
+    justify-content:flex-start;
     align-items: center;
 }
 
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 li {
@@ -172,6 +173,7 @@ nav a {
 /* Inventario e informe (fin) */
 
 
+
 .item-1, .item-2, .item-3, .item-4, .item-inventario{
     background-color: white;
     border-radius: 9px;
@@ -222,9 +224,25 @@ nav a {
 
 .content{
     grid-row: 2;
-    grid-column: 1 / span 3;
+    grid-column: 2 / span 1;
     box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.2);
     margin: 15px;
+}
+
+.content-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content3, #lista-productos{
+    grid-row: 2;
+    grid-column: 1 / span 3;
+}
+
+.sidenav_icons{
+    margin: 15px;
+    margin-left: 0;
 }
 
 #content4{
@@ -256,7 +274,7 @@ nav a {
 }
 
 #afluencia-value, #recaudacion-value{
-    font-size: 40px;
+    font-size: 30px;
 }
 
 table {
