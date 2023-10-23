@@ -237,7 +237,6 @@ def inventario_lista() -> Response | str:
 
             print(f"Comedor seleccionado: {comedor_seleccionado}")
 
-            # Obtener el ID del comedor a partir del nombre
             cur.execute("SELECT idComedor FROM Comedor WHERE nombre = %s", (comedor_seleccionado,))
             id_comedor = cur.fetchone()[0]
 
@@ -320,61 +319,24 @@ def registrar_cliente():
         }
         return jsonify(response), 500
 
-
-@main.route("/mostrar_entregas/<idComedor>", methods=['GET'])
-def mostrar_entregas(idComedor: int):
-    try:
-        conn = connection()
-        cur = conn.cursor()
-        cur.callproc('PROC_MostrarEntregas', idComedor)
-        entregas = cur.fetchall()
-        conn.close()
-
-        response = {
-            'message': 'Entregas mostradas exitosamente',
-            'status': 'success',
-            'entregas': entregas
-        }
-        return jsonify(response), 200
-
-    except Exception as e:
-        response = {
-            'message': 'Error al mostrar entregas',
-            'status': 'error',
-            'error': str(e)
-        }
-        return jsonify(response), 500
+'''
+@main.route("/inventario_app", methods=['GET'])
+def inventario_app() -> Any | Response:
+    if request.method == 'GET':
+        try:
+            ...
+        except exception as e:
+            ...
+        
+'''
 
 
-@main.route("/mostrar_donativos/<idComedor>", methods=['GET'])
-def mostrar_donativos(idComedor: int):
-    try:
-        conn = connection()
-        cur = conn.cursor()
-        cur.callproc('PROC_MostrarDonativos', idComedor)
-        donativos = cur.fetchall()
-        conn.close()
 
-        response = {
-            'message': 'Donativos mostrados exitosamente',
-            'status': 'success',
-            'donativos': donativos
-        }
-        return jsonify(response), 200
-
-    except Exception as e:
-        response = {
-            'message': 'Error al mostrar donativos',
-            'status': 'error',
-            'error': str(e)
-        }
-        return jsonify(response), 500
-
-
+'''
 @main.route("/pruebas", methods=['GET'])
 def pruebas() -> Response | str:
     return render_template('pruebas.html')
-'''
+
 
 @main.route("/img_cerrar_sesion", methods=['GET'])
 def img_cerrar_sesion() -> Response | str:
