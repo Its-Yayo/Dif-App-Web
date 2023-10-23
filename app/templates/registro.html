@@ -7,7 +7,7 @@
     <title>Log in Dif+ App</title>
 </head>
 <body>
-    <div class="login-container">
+    <div class="registro-container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
@@ -22,8 +22,8 @@
         {% endwith %}
 
         <form action="/registro_admin" method="post" class="login-form">
-            <h2>Bienvenido</h2>
-            <img class="logo" src="../templates/images/dif_logo.jpg" width="250px">
+            <h2>¡Bienvenido!</h2>
+            <img class="logo" src="../static/images/dif_logo.jpg" width="250px">
 
              <!-- Menú desplegable para seleccionar el comedor -->
             <label for="comedor">Comedor:</label>

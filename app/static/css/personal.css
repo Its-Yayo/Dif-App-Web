@@ -174,6 +174,7 @@ nav a {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 18fr;
     gap: 0;
+    height: 60%;
 }
 
 .filter_btn{
@@ -226,7 +227,7 @@ th {
 
 /* Estilo para el pie de página */
 footer {
-    background-color: #333; /* Color de fondo */
+    background-color: #8f4a8b; /* Color de fondo */
     color: #fff; /* Color del texto */
     padding: 20px; /* Espaciado interno */
     text-align: center; /* Alineación de texto al centro */
@@ -234,7 +235,7 @@ footer {
 
 /* Estilo para los enlaces en el pie de página */
 footer a {
-    color: #ff9900; /* Color de los enlaces */
+    color:#abb2c1; /* Color de los enlaces */
     text-decoration: none; /* Elimina la subraya predeterminada de los enlaces */
     margin: 0 10px; /* Márgenes horizontales entre los enlaces */
 }

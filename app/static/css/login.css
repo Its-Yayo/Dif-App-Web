@@ -9,11 +9,16 @@ body {
     height: 100vh;
 }
 
-.login-container {
+.login-container, .registro-container {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 70px;
     border-radius: 5px;
+}
+
+.registro-container{
+    height: 79%;
+    width: 25%;
 }
 
 .login-form {
