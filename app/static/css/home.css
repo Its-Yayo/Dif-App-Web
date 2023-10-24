@@ -312,3 +312,8 @@ footer a {
 footer a:hover {
     text-decoration: underline; /* Agrega subraya al pasar el ratón */
 }
+
+.secc_title{
+    align-self: center;
+    font-size: 20px;
+}
